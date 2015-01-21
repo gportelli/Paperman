@@ -44,6 +44,11 @@ public class CameraController : MonoBehaviour {
         else
             currAccelerationOffset = accelerationOffset;
 
-		gameObject.transform.position = player.transform.position + cameraOffset + currAccelerationOffset;
+        Quaternion q = new Quaternion();
+
+        q.eulerAngles = new Vector3(0, player.transform.eulerAngles.y, 0);
+
+		gameObject.transform.position = player.transform.position + q * cameraOffset + currAccelerationOffset;
+        gameObject.transform.eulerAngles = new Vector3(gameObject.transform.eulerAngles.x, player.transform.eulerAngles.y, gameObject.transform.eulerAngles.z);
 	}
 }
