@@ -4,7 +4,7 @@ using System.Collections;
 public class CameraController : MonoBehaviour {
     public Vector3 cameraOffset;
     public float accelerationSensitivity = 0.1f;
-    public float k = 5;
+    public float transitionTime = 0.5f;
     public float maxOffset = 10;
 
     private Vector3 accelerationOffset;
@@ -12,6 +12,8 @@ public class CameraController : MonoBehaviour {
 
     private GameObject player;
     private PlayerController playerController;
+
+    private VectorIntegrator vectorIntegrator;
 
 	// Use this for initialization
 	void Start () {
@@ -21,18 +23,26 @@ public class CameraController : MonoBehaviour {
         currAccelerationOffset = accelerationOffset = Vector3.zero;
 
 		gameObject.transform.position = player.transform.position  + cameraOffset;
+
+        vectorIntegrator = new VectorIntegrator(0.2f);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		//return;
+        vectorIntegrator.AddValue(-playerController.getAcceleration());
 
-        accelerationOffset = - playerController.getAcceleration() * accelerationSensitivity;
+        accelerationOffset = vectorIntegrator.GetValue(Time.deltaTime) * accelerationSensitivity;
         
         if (accelerationOffset.magnitude > maxOffset)
             accelerationOffset = accelerationOffset.normalized * maxOffset;
 
-        currAccelerationOffset += (accelerationOffset - currAccelerationOffset) * Time.deltaTime * k;
+        float step = Time.deltaTime / transitionTime;
+        Vector3 delta = accelerationOffset - currAccelerationOffset;
+
+        if (delta.magnitude > step)
+            currAccelerationOffset += (accelerationOffset - currAccelerationOffset).normalized * step;
+        else
+            currAccelerationOffset = accelerationOffset;
 
 		gameObject.transform.position = player.transform.position + cameraOffset + currAccelerationOffset;
 	}

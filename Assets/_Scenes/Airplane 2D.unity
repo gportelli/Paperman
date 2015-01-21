@@ -125,8 +125,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 900335643}
   m_LocalRotation: {x: 0, y: -.707106829, z: 0, w: .707106829}
-  m_LocalPosition: {x: -7.80000019, y: 100.400002, z: 0}
-  m_LocalScale: {x: 200, y: 200, z: 1}
+  m_LocalPosition: {x: -2, y: 20, z: 0}
+  m_LocalScale: {x: 40, y: 40, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -206,11 +206,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c345fabd854552648aa210ad4ed44b97, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 198
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c345fabd854552648aa210ad4ed44b97, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -97.4000015
+      value: -18
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c345fabd854552648aa210ad4ed44b97, type: 3}
       propertyPath: m_LocalRotation.x
@@ -239,6 +239,18 @@ Prefab:
     - target: {fileID: 100000, guid: c345fabd854552648aa210ad4ed44b97, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c345fabd854552648aa210ad4ed44b97, type: 3}
+      propertyPath: m_LocalScale.x
+      value: .200000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c345fabd854552648aa210ad4ed44b97, type: 3}
+      propertyPath: m_LocalScale.y
+      value: .200000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c345fabd854552648aa210ad4ed44b97, type: 3}
+      propertyPath: m_LocalScale.z
+      value: .200000003
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c345fabd854552648aa210ad4ed44b97, type: 3}
@@ -316,8 +328,8 @@ Transform:
   m_PrefabInternal: {fileID: 1414925046}
   m_GameObject: {fileID: 1422850698}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 198, z: -97.4000015}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 38, z: -18}
+  m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -332,21 +344,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 287a6de96158d114b841f3bee21380bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mass: .600000024
-  gamma: 5
-  g: -9.80000019
-  bottomArea: 1
-  frontArea: .00499999989
-  maxAngularSpeed: 1
-  angularAcceleration: 1
-  showVectors: 0
-  vectorsScale: .699999988
+  vsquare: 1
+  mass: .0500000007
+  g: 9.80000019
+  cdBottom: 2
+  cdFront: .00100000005
+  maxAngularSpeed: 220
+  angularAcceleration: 600
+  showVectors: 1
+  vectorsScale: 3
   redCubePrefab: {fileID: 100000, guid: 4365a2fa5b660144980ac7c93b526bbc, type: 2}
   greenCubePrefab: {fileID: 100000, guid: 53c797dbec7065740b7b79b6b3dd3b85, type: 2}
   yellowCubePrefab: {fileID: 100000, guid: f3181f751238f1343818853312cfebd8, type: 2}
   blueCubePrefab: {fileID: 100000, guid: 173bdd5aa8c896245aed74dc63e74e59, type: 2}
-  frictionBottom: {x: 0, y: 0, z: 0}
-  frictionFront: {x: 0, y: 0, z: 0}
 --- !u!1 &1924574609
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,8 +436,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1924574609}
-  m_LocalRotation: {x: -.043167837, y: .705787897, z: -.043167837, w: -.705787897}
-  m_LocalPosition: {x: 11.1999998, y: 136.100006, z: -88.0999985}
+  m_LocalRotation: {x: -.050125476, y: .705327928, z: -.050125476, w: -.705327928}
+  m_LocalPosition: {x: .949999988, y: 38.0419998, z: -18.1480007}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -443,7 +453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49aff4ac6abbeee45a64a9ca723d8950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraOffset: {x: 4, y: 1, z: 0}
-  accelerationSensitivity: .0299999993
-  k: 10
-  maxOffset: 2.5
+  cameraOffset: {x: 1, y: .150000006, z: 0}
+  accelerationSensitivity: .0199999996
+  transitionTime: .5
+  maxOffset: .200000003
