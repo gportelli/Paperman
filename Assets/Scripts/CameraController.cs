@@ -2,7 +2,11 @@
 using System.Collections;
 
 public class CameraController : MonoBehaviour {
+    public int cameraMode = 0;
+
     public Vector3 cameraOffset;
+    public float cameraDistance = 1;
+    public float cameraHeight = 1;
     public float accelerationSensitivity = 0.1f;
     public float transitionTime = 0.5f;
     public float maxOffset = 10;
@@ -46,9 +50,39 @@ public class CameraController : MonoBehaviour {
 
         Quaternion q = new Quaternion();
 
-        q.eulerAngles = new Vector3(0, player.transform.eulerAngles.y, 0);
+        if(cameraMode == 0)
+        {
+            gameObject.transform.position = player.transform.position + cameraOffset + currAccelerationOffset;
+        }
+        else if (cameraMode == 1)
+        {
+            q.eulerAngles = new Vector3(0, player.transform.eulerAngles.y, 0);
 
-		gameObject.transform.position = player.transform.position + q * cameraOffset + currAccelerationOffset;
-        gameObject.transform.eulerAngles = new Vector3(gameObject.transform.eulerAngles.x, player.transform.eulerAngles.y, gameObject.transform.eulerAngles.z);
+            gameObject.transform.position = player.transform.position + q * cameraOffset + currAccelerationOffset;
+            gameObject.transform.eulerAngles = new Vector3(gameObject.transform.eulerAngles.x, player.transform.eulerAngles.y, gameObject.transform.eulerAngles.z);
+        }
+        else if (cameraMode == 2)
+        {
+            Vector3 offset = new Vector3(0, cameraHeight, cameraDistance);
+
+            Vector3 vel = playerController.GetVelocity();
+
+            if (vel.magnitude > 0)
+            {
+                Vector3 velYplane = new Vector3(vel.x, 0, vel.z);
+                //if (vel.y / velYplane.magnitude < 0.2)
+                //{
+                    q = Quaternion.LookRotation(-velYplane);
+                //}
+            }
+            
+            gameObject.transform.position = player.transform.position + q * offset + currAccelerationOffset;
+
+            gameObject.transform.eulerAngles = 
+                new Vector3(
+                    gameObject.transform.eulerAngles.x,
+                    Quaternion.LookRotation(player.transform.position - gameObject.transform.position).eulerAngles.y,
+                    gameObject.transform.eulerAngles.z);
+        }
 	}
 }

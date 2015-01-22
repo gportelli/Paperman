@@ -2662,7 +2662,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49aff4ac6abbeee45a64a9ca723d8950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraMode: 2
   cameraOffset: {x: 0, y: .340000004, z: -.529999971}
+  cameraDistance: 1
+  cameraHeight: .5
   accelerationSensitivity: .00499999989
   transitionTime: 1
   maxOffset: .150000006

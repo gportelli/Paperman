@@ -125,6 +125,11 @@ public class PlayerController : MonoBehaviour {
             : mass * g / cdRight;
     }
 
+    public Vector3 GetVelocity()
+    {
+        return velocity;
+    }
+
     void FixedUpdate()
     {
         UpdateRotation();
