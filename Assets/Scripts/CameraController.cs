@@ -84,5 +84,9 @@ public class CameraController : MonoBehaviour {
                     Quaternion.LookRotation(player.transform.position - gameObject.transform.position).eulerAngles.y,
                     gameObject.transform.eulerAngles.z);
         }
+        else if (cameraMode == 3)
+        {
+            gameObject.transform.position = player.transform.position + cameraOffset;
+        }
 	}
 }

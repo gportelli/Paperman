@@ -4,6 +4,9 @@ using System.Collections;
 public class PlayerRotationController : MonoBehaviour {
     public bool rotationYZ = false;
 
+    [HideInInspector]
+    public float rotateX = 0, rotateY = 0;
+
     /// <summary>
     /// The maximum angular speed
     /// </summary>
@@ -14,7 +17,6 @@ public class PlayerRotationController : MonoBehaviour {
     /// The angular acceleration
     /// </summary>
     public float angularAccelerationX = 1f;
-
     public float angularAccelerationY = 1f;
 
     /// <summary>
@@ -22,6 +24,8 @@ public class PlayerRotationController : MonoBehaviour {
     /// </summary>
     private float currentAngularSpeed;
     private float currentAngularSpeedY;
+
+    private float destZRotation;
 
 	// Use this for initialization
 	void Start () {
@@ -35,10 +39,32 @@ public class PlayerRotationController : MonoBehaviour {
 
     private void UpdateRotation()
     {
-        Vector3 rotation = transform.eulerAngles;
+        if (rigidbody.velocity.magnitude < 0.1) return;
 
-        float w = Input.GetAxis("Vertical") * maxAngularSpeedX;
+        float w;
+        
+        w = rotateX * maxAngularSpeedX;
+        rigidbody.AddRelativeTorque(Vector3.right * w);
 
+        w = rotateY * maxAngularSpeedY;
+        //rigidbody.AddRelativeTorque(-Vector3.forward * w);
+        rigidbody.AddTorque(Vector3.up * w);
+
+        if (Mathf.Abs(rotateY) < 0.3)
+            destZRotation = 0;
+        else if (w > 0)
+            destZRotation = -30;
+        else
+            destZRotation = 30;
+
+        float rz = transform.eulerAngles.z;
+        if (rz > 180) rz -= 360;
+        if (Mathf.Abs(rz - destZRotation) > 1)
+        {
+            rigidbody.AddRelativeTorque(Vector3.forward * -(rz - destZRotation) * 0.005f);
+        }
+
+        /*
         if (currentAngularSpeed != w)
         {
             if (Mathf.Abs(currentAngularSpeed - w) <= angularAccelerationX * Time.deltaTime)
@@ -52,16 +78,12 @@ public class PlayerRotationController : MonoBehaviour {
             }
         }
 
-        rotation.x += currentAngularSpeed * Time.deltaTime;
-        if (rotation.x > 360) rotation.x -= 360;
-        else if (rotation.x < 0) rotation.x += 360;
-
         transform.Rotate(new Vector3(currentAngularSpeed * Time.deltaTime, 0, 0), Space.World);
-
+        
         if (rotationYZ)
         {
-            w = Input.GetAxis("Horizontal");
-            rotation.z = -w * 30;
+            w = rotateY;
+            //rotation.z = -w * 30;
 
             w *= maxAngularSpeedY;
 
@@ -78,12 +100,13 @@ public class PlayerRotationController : MonoBehaviour {
                 }
             }
 
-            rotation.y += currentAngularSpeedY * Time.deltaTime;
+            //rotation.y += currentAngularSpeedY * Time.deltaTime;
 
-            if (rotation.y > 360) rotation.y -= 360;
-            else if (rotation.y < 0) rotation.y += 360;
+            //if (rotation.y > 360) rotation.y -= 360;
+            //else if (rotation.y < 0) rotation.y += 360;
+
+            transform.Rotate(new Vector3(0, currentAngularSpeedY * Time.deltaTime, 0), Space.World);
         }
-
-        transform.eulerAngles = rotation;
+         * */
     }
 }

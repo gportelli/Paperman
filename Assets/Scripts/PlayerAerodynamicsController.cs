@@ -22,6 +22,9 @@ public class PlayerAerodynamicsController : MonoBehaviour {
     public bool showVectors;
     public float vectorsScale = 1f;
 
+    [HideInInspector]
+    public Vector3 windVector;
+
     public GameObject redCubePrefab, greenCubePrefab, yellowCubePrefab, blueCubePrefab;
 
     private GameObject redCube, greenCube, yellowCube, blueCube;
@@ -151,7 +154,8 @@ public class PlayerAerodynamicsController : MonoBehaviour {
     /// </summary>
     private void UpdateForces()
     {
-        Vector3 windVelocity = -rigidbody.velocity;
+        Vector3 windVelocity = -rigidbody.velocity + windVector;
+
         Vector3 normalBottom = transform.up;
         Vector3 normalFront = transform.forward;
         Vector3 normalRight = transform.right;

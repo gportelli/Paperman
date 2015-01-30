@@ -333,8 +333,9 @@ MonoBehaviour:
   cdBottom: 2
   cdFront: .00100000005
   cdRight: 1
-  showVectors: 0
+  showVectors: 1
   vectorsScale: 3
+  windVector: {x: 0, y: 0, z: 0}
   redCubePrefab: {fileID: 100000, guid: 4365a2fa5b660144980ac7c93b526bbc, type: 2}
   greenCubePrefab: {fileID: 100000, guid: 53c797dbec7065740b7b79b6b3dd3b85, type: 2}
   yellowCubePrefab: {fileID: 100000, guid: f3181f751238f1343818853312cfebd8, type: 2}
@@ -393,6 +394,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wrapWidth: 20
   wrapHeight: 40
+  windSpeed: 4
+  windChangeDuration: 2
 --- !u!54 &1422850704
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -420,6 +423,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationYZ: 0
+  rotateX: 0
+  rotateY: 0
   maxAngularSpeedX: 220
   maxAngularSpeedY: 1
   angularAccelerationX: 600
@@ -520,7 +525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49aff4ac6abbeee45a64a9ca723d8950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraMode: 0
+  cameraMode: 3
   cameraOffset: {x: 1, y: .150000006, z: 0}
   cameraDistance: 1
   cameraHeight: 1
