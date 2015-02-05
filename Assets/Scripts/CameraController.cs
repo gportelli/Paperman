@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour {
     public float cameraDistance = 1;
     public float cameraHeight = 1;
     public float accelerationSensitivity = 0.1f;
-    public float transitionTime = 0.5f;
+    public float transitionTime = 1f;
     public float maxOffset = 10;
 
     private Vector3 accelerationOffset;
@@ -17,7 +17,7 @@ public class CameraController : MonoBehaviour {
     private GameObject player;
     private PlayerController playerController;
 
-    private VectorIntegrator vectorIntegrator;
+    private Vector3 currentVelocity;
 
 	// Use this for initialization
 	void Start () {
@@ -27,26 +27,19 @@ public class CameraController : MonoBehaviour {
         currAccelerationOffset = accelerationOffset = Vector3.zero;
 
 		gameObject.transform.position = player.transform.position  + cameraOffset;
-
-        vectorIntegrator = new VectorIntegrator(0.2f);
 	}
-	
+
 	// Update is called once per frame
 	void LateUpdate () {
-        vectorIntegrator.AddValue(-playerController.getAcceleration());
+        //vectorIntegrator.AddValue(-playerController.getAcceleration());
+        //accelerationOffset = vectorIntegrator.GetValue(Time.deltaTime) * accelerationSensitivity;
 
-        accelerationOffset = vectorIntegrator.GetValue(Time.deltaTime) * accelerationSensitivity;
-        
+        accelerationOffset = -playerController.getAcceleration() * accelerationSensitivity;
+
         if (accelerationOffset.magnitude > maxOffset)
             accelerationOffset = accelerationOffset.normalized * maxOffset;
 
-        float step = Time.deltaTime / transitionTime;
-        Vector3 delta = accelerationOffset - currAccelerationOffset;
-
-        if (delta.magnitude > step)
-            currAccelerationOffset += (accelerationOffset - currAccelerationOffset).normalized * step;
-        else
-            currAccelerationOffset = accelerationOffset;
+        currAccelerationOffset = Helper.SmoothDampVector3(currAccelerationOffset, accelerationOffset, ref currentVelocity, transitionTime);
 
         Quaternion q = new Quaternion();
 
