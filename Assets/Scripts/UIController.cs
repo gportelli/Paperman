@@ -6,7 +6,7 @@ public class UIController : MonoBehaviour {
 
     void OnGUI()
     {
-        GUI.Label(new Rect(Screen.width - 90, 10, 90, 30), "V=" + (int)(player.rigidbody.velocity.magnitude * 3.6) + " Km/h");
+        GUI.Label(new Rect(Screen.width - 90, 10, 90, 60), "V=" + (int)(player.rigidbody.velocity.magnitude * 3.6) + " Km/h");
     }
 
 	// Use this for initialization

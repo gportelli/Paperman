@@ -4,6 +4,9 @@ using System.Collections;
 public class PlayerAerodynamicsController : MonoBehaviour {
     public bool vsquare = false;
 
+    public float Gravity = 9.81f;
+    public float Mass    = 0.05f;
+
     /// <summary>
     /// The bottom surface drag coefficient
     /// </summary>
@@ -21,6 +24,8 @@ public class PlayerAerodynamicsController : MonoBehaviour {
 
     public bool showVectors;
     public float vectorsScale = 1f;
+
+    public float LiftCoefficient;
 
     [HideInInspector]
     public Vector3 windVector;
@@ -44,6 +49,7 @@ public class PlayerAerodynamicsController : MonoBehaviour {
     private Vector3 frictionBottom;
     private Vector3 frictionFront;
     private Vector3 frictionRight;
+    private Vector3 lift;
 
     /// <summary>
     /// Gets the instant acceleration.
@@ -59,6 +65,13 @@ public class PlayerAerodynamicsController : MonoBehaviour {
     {
         rigidbody.velocity = Vector3.zero;
 
+        Physics.gravity = new Vector3(0, -Gravity, 0);
+        rigidbody.mass = Mass;
+
+        float tmp = rigidbody.mass / 250;
+        rigidbody.inertiaTensor = new Vector3(tmp, tmp, tmp);
+        rigidbody.centerOfMass = new Vector3(0, 0, 0);
+
         weightForce = rigidbody.mass * Physics.gravity;
 
         redCube = Instantiate(redCubePrefab) as GameObject;
@@ -71,24 +84,24 @@ public class PlayerAerodynamicsController : MonoBehaviour {
     {
         return
             vsquare
-            ? Mathf.Sqrt(rigidbody.mass * Physics.gravity.magnitude / cdBottom)
-            : rigidbody.mass * Physics.gravity.magnitude / cdBottom;
+            ? Mathf.Sqrt(Mass * Gravity / cdBottom)
+            : Mass * Gravity / cdBottom;
     }
 
     public float getTerminalFrontSpeed()
     {
         return
             vsquare
-            ? Mathf.Sqrt(rigidbody.mass * Physics.gravity.magnitude / cdFront)
-            : rigidbody.mass * Physics.gravity.magnitude / cdFront;
+            ? Mathf.Sqrt(Mass * Gravity / cdFront)
+            : Mass * Gravity / cdFront;
     }
 
     public float getTerminalrightSpeed()
     {
         return
             vsquare
-            ? Mathf.Sqrt(rigidbody.mass * Physics.gravity.magnitude / cdRight)
-            : rigidbody.mass * Physics.gravity.magnitude / cdRight;
+            ? Mathf.Sqrt(Mass * Gravity / cdRight)
+            : Mass * Gravity / cdRight;
     }
 
     public Vector3 GetVelocity()
@@ -104,6 +117,9 @@ public class PlayerAerodynamicsController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetButtonDown("Fire2"))
+            showVectors = !showVectors;
+
         UpdateVectors();
     }
 
@@ -125,6 +141,7 @@ public class PlayerAerodynamicsController : MonoBehaviour {
             DrawVector(frictionFront, yellowCube, transform.TransformPoint(new Vector3(0, 0, -0.5f)));
             DrawVector(new Vector3(0, -rigidbody.mass * Physics.gravity.magnitude, 0), blueCube, transform.position + new Vector3(0, -0.1f, 0));
             DrawVector(resultForce + weightForce, greenCube, transform.position);
+            DrawVector(lift, yellowCube, transform.TransformPoint(new Vector3(0.2f, 0.2f, 0)));
         }
     }
 
@@ -164,23 +181,42 @@ public class PlayerAerodynamicsController : MonoBehaviour {
         float windFront = Vector3.Dot(normalFront, windVelocity);
         float windRight = Vector3.Dot(normalRight, windVelocity);
 
+        float currCdFront = GetCdFront();
+
         if (vsquare)
         {
             frictionBottom = cdBottom * normalBottom * windBottom * windBottom * Mathf.Sign(windBottom);
-            frictionFront = cdFront * normalFront * windFront * windFront * Mathf.Sign(windFront);
+            frictionFront = currCdFront * normalFront * windFront * windFront * Mathf.Sign(windFront);
             frictionRight = cdRight * normalRight * windRight * windRight * Mathf.Sign(windRight);
         }
         else
         {
             frictionBottom = cdBottom * normalBottom * windBottom;
-            frictionFront = cdFront * normalFront * windFront;
+            frictionFront = currCdFront * normalFront * windFront;
             frictionRight = cdRight * normalRight * windRight;
         }
 
-        resultForce = frictionFront + frictionBottom + frictionRight;
+        lift = GetLift(windFront);
+        
+        resultForce = frictionFront + frictionBottom + frictionRight + lift;
 
         rigidbody.AddForce(resultForce);
 
         //Debug.Log("rotation: " + transform.rotation.eulerAngles.x + " windVelocity:" + windVelocity + " frictionBottom:" + frictionBottom.z + " frictionFront" + frictionFront.z + " resultForce:" + resultForce.z);
+    }
+
+    private float GetCdFront()
+    {
+        float rotX = Helper.GetRotation(transform.eulerAngles.x - 30);
+
+        if (rotX > 0) return cdFront;
+        else return Mathf.Lerp(cdFront, 0, -rotX / 30);
+    }
+
+    private Vector3 GetLift(float windVelocity)
+    {
+        if (windVelocity > 0) return Vector3.zero;
+
+        return Mathf.Cos(transform.eulerAngles.x * Mathf.Deg2Rad) * LiftCoefficient * windVelocity * windVelocity * transform.up;
     }
 }

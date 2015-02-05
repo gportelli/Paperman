@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c345fabd854552648aa210ad4ed44b97
+guid: 6c587cddaf5d3cf41a7e5189bb1b334c
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
@@ -7,8 +7,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Plane001
-    4300002: PaperPlane
+    4300000: Cylinder001
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -29,7 +28,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: .00999999978
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1

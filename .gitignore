@@ -6,6 +6,8 @@ Library/
 build/
 UnityVS/
 UnityVS.*
+Standard Assets/
+Downloads/
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #

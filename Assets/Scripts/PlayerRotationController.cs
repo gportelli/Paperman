@@ -2,111 +2,68 @@
 using System.Collections;
 
 public class PlayerRotationController : MonoBehaviour {
-    public bool rotationYZ = false;
+    public float X_Torque = 0.02f;
+    public float Y_Torque = 0.025f;
+    public float Z_Torque = 0.001f;
 
-    [HideInInspector]
-    public float rotateX = 0, rotateY = 0;
+    public float MinXRot = -65f;
+    public float MaxXRot = 65f;
 
-    /// <summary>
-    /// The maximum angular speed
-    /// </summary>
-    public float maxAngularSpeedX = 1f;
-    public float maxAngularSpeedY = 1f;
+    private float rotateX = 0, rotateY = 0;
+    private float maxSpeed;
 
-    /// <summary>
-    /// The angular acceleration
-    /// </summary>
-    public float angularAccelerationX = 1f;
-    public float angularAccelerationY = 1f;
-
-    /// <summary>
-    /// The current angular speed
-    /// </summary>
-    private float currentAngularSpeed;
-    private float currentAngularSpeedY;
-
-    private float destZRotation;
-
-	// Use this for initialization
 	void Start () {
-        currentAngularSpeed = 0;
+        PlayerAerodynamicsController pac = GetComponent<PlayerAerodynamicsController>();
+        maxSpeed = pac.getTerminalFrontSpeed();
 	}
 	
-	// Update is called once per frame
 	void FixedUpdate () {
+        GetUserInput();
         UpdateRotation();
 	}
+
+    void GetUserInput()
+    {
+        rotateX = Input.GetAxis("Vertical");
+        rotateY = Input.GetAxis("Horizontal");
+    }
 
     private void UpdateRotation()
     {
         if (rigidbody.velocity.magnitude < 0.1) return;
 
-        float w;
-        
-        w = rotateX * maxAngularSpeedX;
-        rigidbody.AddRelativeTorque(Vector3.right * w);
+        float desiredZRotation = 0f, epsilon = 0.3f;
+        float rx = Helper.GetRotation(transform.eulerAngles.x);
+        //float ry = Helper.GetRotation(transform.eulerAngles.y);
+        float rz = Helper.GetRotation(transform.eulerAngles.z);
 
-        w = rotateY * maxAngularSpeedY;
-        //rigidbody.AddRelativeTorque(-Vector3.forward * w);
-        rigidbody.AddTorque(Vector3.up * w);
+        float minXRot = GetMinXRot();
 
-        if (Mathf.Abs(rotateY) < 0.3)
-            destZRotation = 0;
-        else if (w > 0)
-            destZRotation = -30;
-        else
-            destZRotation = 30;
-
-        float rz = transform.eulerAngles.z;
-        if (rz > 180) rz -= 360;
-        if (Mathf.Abs(rz - destZRotation) > 1)
+        // Adjust x rotation
+        if (rotateX >= 0 && rx > MaxXRot - epsilon)
         {
-            rigidbody.AddRelativeTorque(Vector3.forward * -(rz - destZRotation) * 0.005f);
+            rotateX = (MaxXRot - rx) * X_Torque;
+        }
+        else if (rotateX <= 0 && rx < minXRot + epsilon)
+        {
+            rotateX = (minXRot - rx) * X_Torque;
         }
 
-        /*
-        if (currentAngularSpeed != w)
-        {
-            if (Mathf.Abs(currentAngularSpeed - w) <= angularAccelerationX * Time.deltaTime)
-                currentAngularSpeed = w;
-            else
-            {
-                if (currentAngularSpeed < w)
-                    currentAngularSpeed += angularAccelerationX * Time.deltaTime;
-                else
-                    currentAngularSpeed -= angularAccelerationX * Time.deltaTime;
-            }
-        }
+        rigidbody.AddRelativeTorque(Vector3.right * rotateX * X_Torque);
+        rigidbody.AddTorque(Vector3.up * rotateY * Y_Torque);
 
-        transform.Rotate(new Vector3(currentAngularSpeed * Time.deltaTime, 0, 0), Space.World);
-        
-        if (rotationYZ)
-        {
-            w = rotateY;
-            //rotation.z = -w * 30;
+        if (Mathf.Abs(rotateY) > epsilon)
+            desiredZRotation = -30 * Mathf.Sign(rotateY);
 
-            w *= maxAngularSpeedY;
-
-            if (currentAngularSpeedY != w)
-            {
-                if (Mathf.Abs(currentAngularSpeedY - w) <= angularAccelerationY * Time.deltaTime)
-                    currentAngularSpeedY = w;
-                else
-                {
-                    if (currentAngularSpeedY < w)
-                        currentAngularSpeedY += angularAccelerationY * Time.deltaTime;
-                    else
-                        currentAngularSpeedY -= angularAccelerationY * Time.deltaTime;
-                }
-            }
-
-            //rotation.y += currentAngularSpeedY * Time.deltaTime;
-
-            //if (rotation.y > 360) rotation.y -= 360;
-            //else if (rotation.y < 0) rotation.y += 360;
-
-            transform.Rotate(new Vector3(0, currentAngularSpeedY * Time.deltaTime, 0), Space.World);
-        }
-         * */
+        if (Mathf.Abs(rz - desiredZRotation) > 1)
+            rigidbody.AddRelativeTorque(Vector3.forward * -(rz - desiredZRotation) * Z_Torque);
     }
+
+    private float GetMinXRot()
+    {
+        float v = Vector3.Dot(gameObject.rigidbody.velocity, transform.forward);
+
+        return Mathf.Lerp(0, MinXRot, (v - maxSpeed / 5) * 4 / maxSpeed);
+    }
+
 }
