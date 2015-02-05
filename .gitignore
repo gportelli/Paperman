@@ -7,7 +7,9 @@ build/
 UnityVS/
 UnityVS.*
 Standard Assets/
+Standard Assets.*
 Downloads/
+Downloads.*
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
