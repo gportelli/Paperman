@@ -57,15 +57,11 @@ public class WindBoost : MonoBehaviour
             boostWindParticle.Stop();
         }
 
-        Vector3 destSpeed = desiredWindSpeed + airfluxWind;
-
-        currWindSpeed.x = Mathf.SmoothDamp(currWindSpeed.x, destSpeed.x, ref currVel.x, windSmoothTime);
-        currWindSpeed.y = Mathf.SmoothDamp(currWindSpeed.y, destSpeed.y, ref currVel.y, windSmoothTime);
-        currWindSpeed.z = Mathf.SmoothDamp(currWindSpeed.z, destSpeed.z, ref currVel.z, windSmoothTime);
+        currWindSpeed = Helper.SmoothDampVector3(currWindSpeed, desiredWindSpeed, ref currVel, windSmoothTime);
 
         Color c = new Color(dustColor.r, dustColor.g, dustColor.b, dustColor.a * currWindSpeed.magnitude / windSpeed);
         boostWindParticle.renderer.material.SetColor("_TintColor", c);
 
-        aerodynamics.windVector = currWindSpeed; 
+        aerodynamics.windVector = currWindSpeed + airfluxWind; 
     }
 }
