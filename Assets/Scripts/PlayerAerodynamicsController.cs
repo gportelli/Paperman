@@ -22,10 +22,15 @@ public class PlayerAerodynamicsController : MonoBehaviour {
     /// </summary>
     public float cdRight = 1f;
 
+    public float LiftCoefficient;
+
+    public  float maxForce = 1f;
+
+    public float cdFrontZeroStart = 0f;  // Start of the x rotation range (degrees) where cdFront is linear interpolated to zero (positive x up)
+    public float cdFrontZeroSize = 30f; // Size of the x rotation range (degrees) where cdFront is linear interpolated to zero (positive x up)
+
     public bool showVectors;
     public float vectorsScale = 1f;
-
-    public float LiftCoefficient;
 
     [HideInInspector]
     public Vector3 windVector;
@@ -44,12 +49,23 @@ public class PlayerAerodynamicsController : MonoBehaviour {
     /// </summary>
     private Vector3 resultForce;
 
-    private Vector3 weightForce;
-    
     private Vector3 frictionBottom;
     private Vector3 frictionFront;
     private Vector3 frictionRight;
     private Vector3 lift;
+    private Vector3 lastVelocity;
+
+    private Vector3 ClampForce(Vector3 force)
+    {       
+        if (force.magnitude > maxForce)
+        {
+            //Debug.Log("Clamping force=" + force.magnitude);
+
+            return force.normalized * maxForce;
+        }
+        else
+            return force;
+    }
 
     /// <summary>
     /// Gets the instant acceleration.
@@ -57,7 +73,9 @@ public class PlayerAerodynamicsController : MonoBehaviour {
     /// <returns></returns>
     public Vector3 getAcceleration()
     {
-        return (resultForce + weightForce) / rigidbody.mass;
+        return (rigidbody.velocity - lastVelocity) / Time.deltaTime;
+
+        //return (resultForce + weightForce) / rigidbody.mass;
     }
 
     // Use this for initialization
@@ -72,12 +90,12 @@ public class PlayerAerodynamicsController : MonoBehaviour {
         rigidbody.inertiaTensor = new Vector3(tmp, tmp, tmp);
         rigidbody.centerOfMass = new Vector3(0, 0, 0);
 
-        weightForce = rigidbody.mass * Physics.gravity;
-
         redCube = Instantiate(redCubePrefab) as GameObject;
         greenCube = Instantiate(greenCubePrefab) as GameObject;
         yellowCube = Instantiate(yellowCubePrefab) as GameObject;
         blueCube = Instantiate(blueCubePrefab) as GameObject;
+
+        //rigidbody.velocity = new Vector3(0, -10f, 0);
     }
 
     public float getTerminalBottomSpeed()
@@ -111,6 +129,8 @@ public class PlayerAerodynamicsController : MonoBehaviour {
 
     void FixedUpdate()
     {
+        //if (count-- == 0) Debug.Break();
+
         UpdateForces();
     }
 
@@ -141,7 +161,7 @@ public class PlayerAerodynamicsController : MonoBehaviour {
             DrawVector(frictionFront, yellowCube, transform.TransformPoint(new Vector3(0, 0, -0.5f)));
             DrawVector(new Vector3(0, -rigidbody.mass * Physics.gravity.magnitude, 0), blueCube, transform.position + new Vector3(0, -0.1f, 0));
             DrawVector(resultForce + weightForce, greenCube, transform.position);
-            DrawVector(lift, yellowCube, transform.TransformPoint(new Vector3(0.2f, 0.2f, 0)));
+            DrawVector(lift, yellowCube, transform.TransformPoint(new Vector3(0.05f, 0.2f, 0)));
         }
     }
 
@@ -166,11 +186,15 @@ public class PlayerAerodynamicsController : MonoBehaviour {
         cube.transform.LookAt(cube.transform.position + v);
     }
 
+    private float lastV1, lastV2;
+
     /// <summary>
     /// Computes the sum of the forces (gravity and friction) and updates the velocity.
     /// </summary>
     private void UpdateForces()
     {
+        lastVelocity = rigidbody.velocity;
+
         Vector3 windVelocity = -rigidbody.velocity + windVector;
 
         Vector3 normalBottom = transform.up;
@@ -198,7 +222,16 @@ public class PlayerAerodynamicsController : MonoBehaviour {
 
         lift = GetLift(windFront);
         
-        resultForce = frictionFront + frictionBottom + frictionRight + lift;
+        resultForce = ClampForce(frictionFront) + ClampForce(frictionBottom) + ClampForce(frictionRight) + ClampForce(lift);
+        /*
+        if(Mathf.Sign(lastV2 - lastV1) != Mathf.Sign(lastV1 - rigidbody.velocity.y))
+            Debug.LogWarning(resultForce.y + " | " + lastV2 + " " + lastV1 + " " +rigidbody.velocity.y);
+
+        //Debug.Log(resultForce.y + " | " + rigidbody.velocity.y);
+
+        lastV2 = lastV1;
+        lastV1 = rigidbody.velocity.y;
+        */
 
         rigidbody.AddForce(resultForce);
 
@@ -207,10 +240,10 @@ public class PlayerAerodynamicsController : MonoBehaviour {
 
     private float GetCdFront()
     {
-        float rotX = Helper.GetRotation(transform.eulerAngles.x - 30);
+        float rotX = Helper.GetRotation(transform.eulerAngles.x + cdFrontZeroStart);
 
         if (rotX > 0) return cdFront;
-        else return Mathf.Lerp(cdFront, 0, -rotX / 30);
+        else return Mathf.Lerp(cdFront, 0, -rotX / cdFrontZeroSize);
     }
 
     private Vector3 GetLift(float windVelocity)
