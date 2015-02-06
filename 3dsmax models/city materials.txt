@@ -1,0 +1,9 @@
+materiali
+20. strade
+21. marciapiedi side
+22. marciapiedi top
+23. pavè
+
+1,2,3,4,5 Palazzi
+
+10 tetti
