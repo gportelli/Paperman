@@ -6,12 +6,13 @@ public class PlayerController : MonoBehaviour {
 
     private PlayerAerodynamicsController aerodynamics;
     private SparkleController sparkleController;
-
+    private TurbineBoost turbineBoost;
 
     void Awake()
     {
         aerodynamics = GetComponent<PlayerAerodynamicsController>();
         sparkleController = GameObject.Find("SparkleRising").gameObject.GetComponent<SparkleController>();
+        turbineBoost = GetComponent<TurbineBoost>();
     }
 
 	void Start () {        
@@ -28,13 +29,13 @@ public class PlayerController : MonoBehaviour {
         return aerodynamics.getAcceleration();
     }
 
-	// Update is called once per frame
-	void Update () {
-        
+	void FixedUpdate () {
+        rigidbody.AddForce(turbineBoost.GetBoost());
 	}
    
     void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Enter");
         if (other.tag == "Cube")
         {
             Destroy(other.gameObject);
