@@ -32,9 +32,6 @@ public class PlayerAerodynamicsController : MonoBehaviour {
     public bool showVectors;
     public float vectorsScale = 1f;
 
-    [HideInInspector]
-    public Vector3 windVector; // wind from air flux
-
     public GameObject redCubePrefab, greenCubePrefab, yellowCubePrefab, blueCubePrefab;
 
     private GameObject redCube, greenCube, yellowCube, blueCube;
@@ -54,6 +51,8 @@ public class PlayerAerodynamicsController : MonoBehaviour {
     private Vector3 frictionRight;
     private Vector3 lift;
     private Vector3 lastVelocity;
+
+    private WindBoost windBoost;
 
     private Vector3 ClampForce(Vector3 force)
     {       
@@ -94,6 +93,8 @@ public class PlayerAerodynamicsController : MonoBehaviour {
         greenCube = Instantiate(greenCubePrefab) as GameObject;
         yellowCube = Instantiate(yellowCubePrefab) as GameObject;
         blueCube = Instantiate(blueCubePrefab) as GameObject;
+
+        windBoost = GetComponent<WindBoost>();
 
         //rigidbody.velocity = new Vector3(0, -10f, 0);
     }
@@ -195,7 +196,7 @@ public class PlayerAerodynamicsController : MonoBehaviour {
     {
         lastVelocity = rigidbody.velocity;
 
-        Vector3 windVelocity = -rigidbody.velocity + windVector;
+        Vector3 windVelocity = -rigidbody.velocity + windBoost.GetWindBoost();
 
         Vector3 normalBottom = transform.up;
         Vector3 normalFront = transform.forward;

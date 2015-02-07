@@ -17,11 +17,11 @@ public class PlayerRotationController : MonoBehaviour {
     private float rotateX = 0, rotateY = 0;
     private float terminalFrontSpeed;
 
-    private PlayerAerodynamicsController aerodynamics;
+    private WindBoost windBoost;
 
 	void Start () {
-        aerodynamics = GetComponent<PlayerAerodynamicsController>();
-        terminalFrontSpeed = aerodynamics.getTerminalFrontSpeed();
+        windBoost = GetComponent<WindBoost>();
+        terminalFrontSpeed = GetComponent<PlayerAerodynamicsController>().getTerminalFrontSpeed();
 	}
 	
 	void FixedUpdate () {
@@ -33,7 +33,7 @@ public class PlayerRotationController : MonoBehaviour {
 
     float GetZTurbulence(float forwardWindSpeed)
     {
-        float v = Mathf.Clamp01(Mathf.Abs(forwardWindSpeed /terminalFrontSpeed) - aerodynamics.windVector.magnitude);
+        float v = Mathf.Clamp01(Mathf.Abs(forwardWindSpeed /terminalFrontSpeed) - windBoost.GetWindBoost().magnitude);
         //v = testSpeed;
         
         if (v > 0.8) return 0;
@@ -54,7 +54,7 @@ public class PlayerRotationController : MonoBehaviour {
 
     float GetXTurbulence(float forwardWindSpeed)
     {
-        float v = Mathf.Clamp01(Mathf.Abs(forwardWindSpeed / terminalFrontSpeed) - aerodynamics.windVector.magnitude);
+        float v = Mathf.Clamp01(Mathf.Abs(forwardWindSpeed / terminalFrontSpeed) - windBoost.GetWindBoost().magnitude);
         //v = testSpeed;
 
         if (v > 0.8) return 0;
