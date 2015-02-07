@@ -33,7 +33,7 @@ public class PlayerAerodynamicsController : MonoBehaviour {
     public float vectorsScale = 1f;
 
     [HideInInspector]
-    public Vector3 windVector;
+    public Vector3 windVector; // wind from air flux
 
     public GameObject redCubePrefab, greenCubePrefab, yellowCubePrefab, blueCubePrefab;
 

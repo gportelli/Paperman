@@ -10361,6 +10361,8 @@ MonoBehaviour:
   Z_Torque: .00100000005
   MinXRot: -65
   MaxXRot: 65
+  turbulenceMagnitudeX: .300000012
+  turbulenceMagnitudeZ: 10
 --- !u!114 &2132619207
 MonoBehaviour:
   m_ObjectHideFlags: 0
