@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: sheet
-  m_Shader: {fileID: 7, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: e26bbe7b4f4661b4e8d511a8d61a67ff, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -17,12 +17,42 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 1281dc7765f2b634fba2127bddb03612, type: 3}
+          m_Texture: {fileID: 2800000, guid: 57101fe0555b98e43a9bd91849462611, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
-    m_Floats: {}
+      data:
+        first:
+          name: _BurntTex
+        second:
+          m_Texture: {fileID: 2800000, guid: acb9c598fa1cbef418b759fc7d3b5668, type: 3}
+          m_Scale: {x: 2, y: 2}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _EnergyTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 7c2653ca9a0e8374aaf59d83401f0035, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _Blend
+        second: 0
+      data:
+        first:
+          name: _BurntLevel
+        second: 0
+      data:
+        first:
+          name: _EnergyLevel
+        second: 0
     m_Colors:
       data:
         first:
           name: _Color
         second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _EnergyColor
+        second: {r: .304660439, g: .442690194, b: .845588207, a: .650980413}
