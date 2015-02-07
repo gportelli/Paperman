@@ -2,11 +2,17 @@
 using System.Collections;
 
 public class CameraController : MonoBehaviour {
-    public int cameraMode = 0;
+    public float cameraDistance = 2;
+    public float rotationOffsetY = 10f;
+    public float rotationStartX = 20f;
+    public float maxXRotation = 60f;
+    public float minXRotation = -60f;
+    public float minXRotationAuto = -10;
+    public float maxXRotationAuto = 30;
+    public float rotationSpeed = 90;
+    public float rotationSmoothTime = 1f;
+    public float rotationTimeout = 1;
 
-    public Vector3 cameraOffset;
-    public float cameraDistance = 1;
-    public float cameraHeight = 1;
     public float accelerationSensitivity = 0.1f;
     public float transitionTime = 1f;
     public float maxOffset = 10;
@@ -14,10 +20,13 @@ public class CameraController : MonoBehaviour {
     private Vector3 accelerationOffset;
     private Vector3 currAccelerationOffset;
 
+    private Vector3 rotation, currentRotation;
+    private float rotationTime;
+
     private GameObject player;
     private PlayerController playerController;
 
-    private Vector3 currentVelocity;
+    private Vector3 currentVelocity, currentRotVelocity;
 
 	// Use this for initialization
 	void Start () {
@@ -26,13 +35,21 @@ public class CameraController : MonoBehaviour {
 
         currAccelerationOffset = accelerationOffset = Vector3.zero;
 
-		gameObject.transform.position = player.transform.position  + cameraOffset;
+        currentRotation = rotation = new Vector3(rotationStartX, rotationOffsetY, 0);
+
+		gameObject.transform.position = player.transform.position  + GetOffset();
 	}
 
-	// Update is called once per frame
+    Vector3 GetOffset()
+    {
+        Quaternion q = new Quaternion();
+        q.eulerAngles = currentRotation + new Vector3(0, player.transform.eulerAngles.y, 0);
+
+        return q * new Vector3(0, 0, -cameraDistance);
+    }
+
 	void LateUpdate () {
-        //vectorIntegrator.AddValue(-playerController.getAcceleration());
-        //accelerationOffset = vectorIntegrator.GetValue(Time.deltaTime) * accelerationSensitivity;
+        RotateCamera();
 
         accelerationOffset = -playerController.getAcceleration() * accelerationSensitivity;
 
@@ -43,43 +60,70 @@ public class CameraController : MonoBehaviour {
 
         Quaternion q = new Quaternion();
 
-        if(cameraMode == 0)
+        q.eulerAngles = new Vector3(0, player.transform.eulerAngles.y, 0);
+
+        gameObject.transform.position = player.transform.position + GetOffset() + currAccelerationOffset;
+        gameObject.transform.LookAt(player.transform.position);
+        
+        /*
+        Vector3 offset = new Vector3(0, cameraHeight, cameraDistance);
+
+        Vector3 vel = playerController.GetVelocity();
+
+        if (vel.magnitude > 0)
         {
-            gameObject.transform.position = player.transform.position + cameraOffset + currAccelerationOffset;
+            Vector3 velYplane = new Vector3(vel.x, 0, vel.z);
+            //if (vel.y / velYplane.magnitude < 0.2)
+            //{
+                q = Quaternion.LookRotation(-velYplane);
+            //}
         }
-        else if (cameraMode == 1)
-        {
-            q.eulerAngles = new Vector3(0, player.transform.eulerAngles.y, 0);
-
-            gameObject.transform.position = player.transform.position + q * cameraOffset + currAccelerationOffset;
-            gameObject.transform.eulerAngles = new Vector3(gameObject.transform.eulerAngles.x, player.transform.eulerAngles.y, gameObject.transform.eulerAngles.z);
-        }
-        else if (cameraMode == 2)
-        {
-            Vector3 offset = new Vector3(0, cameraHeight, cameraDistance);
-
-            Vector3 vel = playerController.GetVelocity();
-
-            if (vel.magnitude > 0)
-            {
-                Vector3 velYplane = new Vector3(vel.x, 0, vel.z);
-                //if (vel.y / velYplane.magnitude < 0.2)
-                //{
-                    q = Quaternion.LookRotation(-velYplane);
-                //}
-            }
             
-            gameObject.transform.position = player.transform.position + q * offset + currAccelerationOffset;
+        gameObject.transform.position = player.transform.position + q * offset + currAccelerationOffset;
 
-            gameObject.transform.eulerAngles = 
-                new Vector3(
-                    gameObject.transform.eulerAngles.x,
-                    Quaternion.LookRotation(player.transform.position - gameObject.transform.position).eulerAngles.y,
-                    gameObject.transform.eulerAngles.z);
-        }
-        else if (cameraMode == 3)
-        {
-            gameObject.transform.position = player.transform.position + cameraOffset;
-        }
+        gameObject.transform.eulerAngles = 
+            new Vector3(
+                gameObject.transform.eulerAngles.x,
+                Quaternion.LookRotation(player.transform.position - gameObject.transform.position).eulerAngles.y,
+                gameObject.transform.eulerAngles.z);
+        */
 	}
+
+    private void RotateCamera()
+    {
+        float rh = Input.GetAxis("Analog2Horiz"); 
+        float rv = Input.GetAxis("Analog2Vert");
+        
+        rotation.y += rh * rotationSpeed * Time.deltaTime;
+        if (rotation.y > 360) rotation.y -= 360;
+        else if(rotation.y < 0) rotation.y += 360;
+
+        rotation.x += rv * rotationSpeed * Time.deltaTime;
+        if (rotation.x > maxXRotation) rotation.x = maxXRotation;
+        else if (rotation.x < minXRotation) rotation.x = minXRotation;
+
+        if (rh != 0 || rv != 0)
+            rotationTime = rotationTimeout;
+
+        if (rotationTime > 0)
+        {
+            rotationTime -= Time.deltaTime;
+
+            if (rotationTime <= 0)
+            {
+                rotationTime = 0;                
+                
+                if (rotation.y > 180) rotation.y -= 360;
+                rotation.y = rotation.y > 0 ? rotationOffsetY : -rotationOffsetY;
+
+                if (rotation.x > maxXRotationAuto) rotation.x = maxXRotationAuto;
+                else if (rotation.x < minXRotationAuto) rotation.x = minXRotationAuto;
+            }
+        }
+
+        if (currentRotation.y - rotation.y > 180) rotation.y += 360;
+        else if (currentRotation.y - rotation.y < -180) currentRotation.y += 360;
+
+        currentRotation = Helper.SmoothDampVector3(currentRotation, rotation, ref currentRotVelocity, rotationSmoothTime);
+    }
 }
