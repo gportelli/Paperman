@@ -43,114 +43,12 @@ LightmapSettings:
   - m_Lightmap: {fileID: 2800000, guid: f4aa367458dc0b6419cbb9ea8aee8c30, type: 3}
     m_IndirectLightmap: {fileID: 2800000, guid: f7856d34810d67c4282b65f42634d7f7,
       type: 3}
-  - m_Lightmap: {fileID: 2800000, guid: f20b10aa5a8817c4992e5b1f69d72882, type: 3}
-    m_IndirectLightmap: {fileID: 2800000, guid: 35ecbb24f9bbf4f45be39474ced7923c,
-      type: 3}
-  - m_Lightmap: {fileID: 2800000, guid: d9d8682f522fd90479189fc8ed575cfe, type: 3}
-    m_IndirectLightmap: {fileID: 2800000, guid: 6a742ed17f31b4845b6ac0896eb34e94,
-      type: 3}
-  - m_Lightmap: {fileID: 2800000, guid: 0fdc763ab6551f24d996127dcb94f45e, type: 3}
-    m_IndirectLightmap: {fileID: 2800000, guid: dece63419c261dc43921e52dc3d24a06,
-      type: 3}
-  - m_Lightmap: {fileID: 2800000, guid: de36e0132eaf5e043b8ddc53b14cd80b, type: 3}
-    m_IndirectLightmap: {fileID: 2800000, guid: f69f8f6d22c13134eb0bc268553a4197,
-      type: 3}
-  - m_Lightmap: {fileID: 2800000, guid: de0b0c373bd5f30439e3a77e5c7a0350, type: 3}
-    m_IndirectLightmap: {fileID: 2800000, guid: db6131b7aed9d6a4294b111f0e41397e,
-      type: 3}
-  - m_Lightmap: {fileID: 2800000, guid: 0d9bb0fd581ffa14c83314df4076506c, type: 3}
-    m_IndirectLightmap: {fileID: 2800000, guid: 3f2b241d371846149af1092b28ea83cc,
-      type: 3}
-  - m_Lightmap: {fileID: 2800000, guid: cb580fb1110b5954f8a7a668ffac0e0a, type: 3}
-    m_IndirectLightmap: {fileID: 2800000, guid: 1e81879dd2d8db843b41370210e162d5,
-      type: 3}
-  - m_Lightmap: {fileID: 2800000, guid: bf9caec2d752c484ea67ed3cea240682, type: 3}
-    m_IndirectLightmap: {fileID: 2800000, guid: 6f709f8dfbfb4e748b74bb9b188394c4,
-      type: 3}
-  - m_Lightmap: {fileID: 2800000, guid: 5ac064175e7dd3a428868163f546b152, type: 3}
-    m_IndirectLightmap: {fileID: 2800000, guid: 543c4bcec5ee56d49b61d0f23fac802b,
-      type: 3}
-  - m_Lightmap: {fileID: 2800000, guid: 2e6bf8eaa98618242833f266157f788d, type: 3}
-    m_IndirectLightmap: {fileID: 2800000, guid: b7bd500604aa7e74888269ce0bd92bb1,
-      type: 3}
-  - m_Lightmap: {fileID: 2800000, guid: e7baa1b187d4df64ba3ebdc29d9e9bba, type: 3}
-    m_IndirectLightmap: {fileID: 2800000, guid: e4da820e224a012448fa3c7f7220aaea,
-      type: 3}
-  - m_Lightmap: {fileID: 2800000, guid: 195e36d548b0c8a49a1d0762d476c1b4, type: 3}
-    m_IndirectLightmap: {fileID: 2800000, guid: 32ecfa0f0c7366943a89a0b75a480c45,
-      type: 3}
-  - m_Lightmap: {fileID: 2800000, guid: 34dcfd6a4d4d61b48a890e6a87e1f0d4, type: 3}
-    m_IndirectLightmap: {fileID: 2800000, guid: 6545a7c1a6412db439d2ebe3a6d69a5f,
-      type: 3}
-  - m_Lightmap: {fileID: 2800000, guid: 2f4656d99fdcd844e820c08864564e5b, type: 3}
-    m_IndirectLightmap: {fileID: 2800000, guid: 76a027ae28c053042bf3ba2a525716c1,
-      type: 3}
-  - m_Lightmap: {fileID: 2800000, guid: d5a73c4de3626b443999f0974a2fb919, type: 3}
-    m_IndirectLightmap: {fileID: 2800000, guid: 0b375265054b98745a1810c304a67b80,
-      type: 3}
-  - m_Lightmap: {fileID: 2800000, guid: d347d94a6a70f1c40b358d632dd07a3b, type: 3}
-    m_IndirectLightmap: {fileID: 2800000, guid: 64d606b261c7a3748aa107793ae552c8,
-      type: 3}
-  - m_Lightmap: {fileID: 2800000, guid: 99e7e13b73004934fbc87c12f69e20a6, type: 3}
-    m_IndirectLightmap: {fileID: 2800000, guid: 25dd286e539c3eb439f7e16c66e6169c,
-      type: 3}
-  - m_Lightmap: {fileID: 2800000, guid: c08b3dbe3d20cdb4fbd6a2a9c6c52769, type: 3}
-    m_IndirectLightmap: {fileID: 2800000, guid: e3167116dea01cf48903c4e133f679b5,
-      type: 3}
-  - m_Lightmap: {fileID: 2800000, guid: c949ab4b8252531468b1b12e20f52969, type: 3}
-    m_IndirectLightmap: {fileID: 2800000, guid: 1f4deb4bdf25e994a85baf330de827a8,
-      type: 3}
-  - m_Lightmap: {fileID: 2800000, guid: ef85b592bed559d469b10c957852fea7, type: 3}
-    m_IndirectLightmap: {fileID: 2800000, guid: 55742e4ed880e9e4a8f0ed93f3354c6c,
-      type: 3}
-  - m_Lightmap: {fileID: 2800000, guid: 0839e61ee21ca254da9d71c504df83b6, type: 3}
-    m_IndirectLightmap: {fileID: 2800000, guid: 32f791f704a68564b9093decee0563f0,
-      type: 3}
-  - m_Lightmap: {fileID: 2800000, guid: 55ebd39b448b1ae4d8837800cd42cb66, type: 3}
-    m_IndirectLightmap: {fileID: 2800000, guid: cee495dfc17069642a26c1bbc740490c,
-      type: 3}
-  - m_Lightmap: {fileID: 2800000, guid: a421d0398aeb36949aa1dff8dbc57f22, type: 3}
-    m_IndirectLightmap: {fileID: 2800000, guid: 24d3ce7c622e8c54384ec703a737f745,
-      type: 3}
-  - m_Lightmap: {fileID: 2800000, guid: c5c9fd3f7f957ef448d2d556f1025896, type: 3}
-    m_IndirectLightmap: {fileID: 2800000, guid: a95495b19c8cb8840b885169a5ca3d61,
-      type: 3}
-  - m_Lightmap: {fileID: 2800000, guid: df2e79b2e2ebf404a9b890228168e00f, type: 3}
-    m_IndirectLightmap: {fileID: 2800000, guid: fb9a2f25c87a1e344b1ab67baa359eea,
-      type: 3}
-  - m_Lightmap: {fileID: 2800000, guid: d98f3953905455948b7e837c10da25e7, type: 3}
-    m_IndirectLightmap: {fileID: 2800000, guid: f45f7fd086d588b499b7d3cbd1275456,
-      type: 3}
-  - m_Lightmap: {fileID: 2800000, guid: 9540fc254f7be0549ac2b0ac80afe0cd, type: 3}
-    m_IndirectLightmap: {fileID: 2800000, guid: 3f202a8c31fdd7d4ea0a8042dbd51cb6,
-      type: 3}
-  - m_Lightmap: {fileID: 2800000, guid: 5e5e5ebdb3991c142b374b657c6ff3b3, type: 3}
-    m_IndirectLightmap: {fileID: 2800000, guid: 95dcf966ff7f118408ceee322a92cff4,
-      type: 3}
-  - m_Lightmap: {fileID: 2800000, guid: be4ccf76774dc8944afa6142c1ec0982, type: 3}
-    m_IndirectLightmap: {fileID: 2800000, guid: d1b2dd0a074777340bde8ac227f5e746,
-      type: 3}
-  - m_Lightmap: {fileID: 2800000, guid: 6a9d6d39538c3b54eae35489d52c8252, type: 3}
-    m_IndirectLightmap: {fileID: 2800000, guid: a53bac9488ca9db4fb62b282aea1bae4,
-      type: 3}
-  - m_Lightmap: {fileID: 2800000, guid: 5275824ec6a8de54da544ae2d4a91e5b, type: 3}
-    m_IndirectLightmap: {fileID: 2800000, guid: 373f3e4b11c96224599d89c6600a4fd9,
-      type: 3}
-  - m_Lightmap: {fileID: 2800000, guid: d209f4cc558a9914d9b4776d1d7ed0d1, type: 3}
-    m_IndirectLightmap: {fileID: 2800000, guid: 854194e9ea059644f8c2977559c8c5cb,
-      type: 3}
-  - m_Lightmap: {fileID: 2800000, guid: 7d9cd88bbd9e48c4cb7b81982c431488, type: 3}
-    m_IndirectLightmap: {fileID: 2800000, guid: 19e881d8ca2439947bc45fc16ac08333,
-      type: 3}
-  - m_Lightmap: {fileID: 2800000, guid: b96298d0376c8c346aa7a06fadeb5a9c, type: 3}
-    m_IndirectLightmap: {fileID: 2800000, guid: b36885297ed11e345857f7dced1e7b51,
-      type: 3}
   m_LightmapsMode: 1
   m_BakedColorSpace: 0
   m_UseDualLightmapsInForward: 0
   m_LightmapEditorSettings:
-    m_Resolution: 50
-    m_LastUsedResolution: 50
+    m_Resolution: 10
+    m_LastUsedResolution: 10
     m_TextureWidth: 1024
     m_TextureHeight: 1024
     m_BounceBoost: 1
@@ -334,8 +232,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 7
-  m_LightmapTilingOffset: {x: 1, y: 1, z: -.00390625, w: -.00390625}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .203125, y: .203125, z: .221862793, w: .383972168}
   m_Materials:
   - {fileID: 2100000, guid: c96011efd3950c64c9bafa82b9e78141, type: 2}
   - {fileID: 2100000, guid: afec8ab64ea62274dabc2ef27962af1f, type: 2}
@@ -406,8 +304,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 33
-  m_LightmapTilingOffset: {x: .7890625, y: .7890625, z: -.00308227539, w: -.00308227539}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .157226562, y: .157226562, z: .857784271, w: .384151459}
   m_Materials:
   - {fileID: 2100000, guid: 10ffc0e8e03287d438f203e42bdf8ceb, type: 2}
   - {fileID: 2100000, guid: afec8ab64ea62274dabc2ef27962af1f, type: 2}
@@ -769,8 +667,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 16
-  m_LightmapTilingOffset: {x: 1, y: 1, z: -.00390625, w: -.00390625}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .213867188, y: .213867188, z: .448383331, w: -.000835418701}
   m_Materials:
   - {fileID: 2100000, guid: 0e41c65b0ce86694eb8b2bdb3e206ebc, type: 2}
   - {fileID: 2100000, guid: e4990ed7e09ac40478c299f955be4794, type: 2}
@@ -841,8 +739,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 18
-  m_LightmapTilingOffset: {x: .912109375, y: .912109375, z: -.00356292725, w: -.00356292725}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .181640625, y: .181640625, z: .429954529, w: .200462341}
   m_Materials:
   - {fileID: 2100000, guid: 0e41c65b0ce86694eb8b2bdb3e206ebc, type: 2}
   - {fileID: 2100000, guid: afec8ab64ea62274dabc2ef27962af1f, type: 2}
@@ -918,15 +816,23 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 66e7e1572738c4a49a4df17bb29b67f1, type: 2}
     - target: {fileID: 2300000, guid: 60e1128440237364884cbc4ae66a346b, type: 3}
       propertyPath: m_LightmapIndex
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 60e1128440237364884cbc4ae66a346b, type: 3}
       propertyPath: m_LightmapTilingOffset.z
-      value: -.00390625
+      value: -.00222396851
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 60e1128440237364884cbc4ae66a346b, type: 3}
       propertyPath: m_LightmapTilingOffset.w
-      value: -.00390625
+      value: -.00222396851
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 60e1128440237364884cbc4ae66a346b, type: 3}
+      propertyPath: m_LightmapTilingOffset.x
+      value: .569335938
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 60e1128440237364884cbc4ae66a346b, type: 3}
+      propertyPath: m_LightmapTilingOffset.y
+      value: .569335938
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 60e1128440237364884cbc4ae66a346b, type: 3}
@@ -974,8 +880,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 10
-  m_LightmapTilingOffset: {x: 1, y: 1, z: -.00390625, w: -.00390625}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .216796875, y: .216796875, z: .232551575, w: -.000846862793}
   m_Materials:
   - {fileID: 2100000, guid: 0e41c65b0ce86694eb8b2bdb3e206ebc, type: 2}
   - {fileID: 2100000, guid: e4990ed7e09ac40478c299f955be4794, type: 2}
@@ -1058,8 +964,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 34
-  m_LightmapTilingOffset: {x: .793945312, y: .793945312, z: -.00310134888, w: -.00310134888}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .158203125, y: .158203125, z: .568717957, w: .707389832}
   m_Materials:
   - {fileID: 2100000, guid: 31e770d161169a2459c49f198c6bdc96, type: 2}
   - {fileID: 2100000, guid: e4990ed7e09ac40478c299f955be4794, type: 2}
@@ -1130,8 +1036,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 35
-  m_LightmapTilingOffset: {x: .754882812, y: .754882812, z: -.00294876099, w: -.00294876099}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .150390625, y: .150390625, z: .423240662, w: .745506287}
   m_Materials:
   - {fileID: 2100000, guid: 127a89a6c8c0e444a8bb4978bbc6ccf6, type: 2}
   - {fileID: 2100000, guid: e4990ed7e09ac40478c299f955be4794, type: 2}
@@ -1523,8 +1429,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 8
-  m_LightmapTilingOffset: {x: 1, y: 1, z: -.00390625, w: -.00390625}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .224609375, y: .224609375, z: -.000877380371, w: .200294495}
   m_Materials:
   - {fileID: 2100000, guid: 127a89a6c8c0e444a8bb4978bbc6ccf6, type: 2}
   - {fileID: 2100000, guid: afec8ab64ea62274dabc2ef27962af1f, type: 2}
@@ -1799,8 +1705,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 3
-  m_LightmapTilingOffset: {x: 1, y: 1, z: -.00390625, w: -.00390625}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .212890625, y: .212890625, z: -.000831604004, w: .409324646}
   m_Materials:
   - {fileID: 2100000, guid: 4737afe2fe5cf884f85152fbfd5bb872, type: 2}
   - {fileID: 2100000, guid: d4d77820fad0e514babfa303a620af31, type: 2}
@@ -3285,8 +3191,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 14
-  m_LightmapTilingOffset: {x: 1, y: 1, z: -.00390625, w: -.00390625}
+  m_LightmapIndex: 1
+  m_LightmapTilingOffset: {x: .252929688, y: .252929688, z: .574207306, w: .729480743}
   m_Materials:
   - {fileID: 2100000, guid: 3981161c01107df4eba4be17be96ee52, type: 2}
   - {fileID: 2100000, guid: afec8ab64ea62274dabc2ef27962af1f, type: 2}
@@ -3357,8 +3263,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 15
-  m_LightmapTilingOffset: {x: 1, y: 1, z: -.00390625, w: -.00390625}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .234374985, y: .234375, z: -.000915527286, w: -.000915527344}
   m_Materials:
   - {fileID: 2100000, guid: aaea9c00cbd47d24eafe466f92642636, type: 2}
   - {fileID: 2100000, guid: afec8ab64ea62274dabc2ef27962af1f, type: 2}
@@ -5159,8 +5065,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 4
-  m_LightmapTilingOffset: {x: .995117188, y: .995117188, z: -.00388717651, w: -.00388717651}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .198242188, y: .198242188, z: .662311554, w: -.000774383545}
   m_Materials:
   - {fileID: 2100000, guid: 0e41c65b0ce86694eb8b2bdb3e206ebc, type: 2}
   - {fileID: 2100000, guid: afec8ab64ea62274dabc2ef27962af1f, type: 2}
@@ -5531,8 +5437,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 29
-  m_LightmapTilingOffset: {x: 1, y: 1, z: -.00390625, w: -.00390625}
+  m_LightmapIndex: 1
+  m_LightmapTilingOffset: {x: .3359375, y: .3359375, z: .573883057, w: .551422119}
   m_Materials:
   - {fileID: 2100000, guid: d08b9d0d52a38ae4b960aa122fb80b55, type: 2}
   - {fileID: 2100000, guid: e4990ed7e09ac40478c299f955be4794, type: 2}
@@ -5590,8 +5496,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 2
-  m_LightmapTilingOffset: {x: 1, y: 1, z: -.00390625, w: -.00390625}
+  m_LightmapIndex: 1
+  m_LightmapTilingOffset: {x: .569335938, y: .569335938, z: -.00222396851, w: -.00222396851}
   m_Materials:
   - {fileID: 2100000, guid: d8effc9261e51b940a3c099fb88c1ff7, type: 2}
   - {fileID: 2100000, guid: 66e7e1572738c4a49a4df17bb29b67f1, type: 2}
@@ -5734,8 +5640,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 30
-  m_LightmapTilingOffset: {x: .823242188, y: .823242188, z: -.00321578979, w: -.00321578979}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .1640625, y: .1640625, z: .722015381, w: .384124756}
   m_Materials:
   - {fileID: 2100000, guid: 127a89a6c8c0e444a8bb4978bbc6ccf6, type: 2}
   - {fileID: 2100000, guid: d4d77820fad0e514babfa303a620af31, type: 2}
@@ -5847,8 +5753,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 26
-  m_LightmapTilingOffset: {x: .817382812, y: .817382812, z: -.00319290161, w: -.00319290161}
+  m_LightmapIndex: 1
+  m_LightmapTilingOffset: {x: .163085938, y: .163085938, z: .748386383, w: .392917633}
   m_Materials:
   - {fileID: 2100000, guid: aaea9c00cbd47d24eafe466f92642636, type: 2}
   - {fileID: 2100000, guid: e4990ed7e09ac40478c299f955be4794, type: 2}
@@ -6255,8 +6161,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 22
-  m_LightmapTilingOffset: {x: .91796875, y: .91796875, z: -.00358581543, w: -.00358581543}
+  m_LightmapIndex: 1
+  m_LightmapTilingOffset: {x: .18359375, y: .18359375, z: .565689087, w: .392837524}
   m_Materials:
   - {fileID: 2100000, guid: aaea9c00cbd47d24eafe466f92642636, type: 2}
   - {fileID: 2100000, guid: d4d77820fad0e514babfa303a620af31, type: 2}
@@ -6327,8 +6233,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 19
-  m_LightmapTilingOffset: {x: 1, y: 1, z: -.00390625, w: -.00390625}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .20703125, y: .20703125, z: -.00080871582, w: .824386597}
   m_Materials:
   - {fileID: 2100000, guid: 10ffc0e8e03287d438f203e42bdf8ceb, type: 2}
   - {fileID: 2100000, guid: afec8ab64ea62274dabc2ef27962af1f, type: 2}
@@ -7692,8 +7598,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 28
-  m_LightmapTilingOffset: {x: .841796875, y: .841796875, z: -.00328826904, w: -.00328826904}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .16796875, y: .16796875, z: .859695435, w: -.00065612793}
   m_Materials:
   - {fileID: 2100000, guid: 4737afe2fe5cf884f85152fbfd5bb872, type: 2}
   - {fileID: 2100000, guid: afec8ab64ea62274dabc2ef27962af1f, type: 2}
@@ -7764,8 +7670,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 9
-  m_LightmapTilingOffset: {x: .9765625, y: .9765625, z: -.00381469727, w: -.00381469727}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .1953125, y: .1953125, z: .221893311, w: .574432373}
   m_Materials:
   - {fileID: 2100000, guid: 10ffc0e8e03287d438f203e42bdf8ceb, type: 2}
   - {fileID: 2100000, guid: d4d77820fad0e514babfa303a620af31, type: 2}
@@ -7836,8 +7742,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 27
-  m_LightmapTilingOffset: {x: .844726562, y: .844726562, z: -.00329971313, w: -.00329971313}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .168945312, y: .168945312, z: .576488495, w: .384105682}
   m_Materials:
   - {fileID: 2100000, guid: 10ffc0e8e03287d438f203e42bdf8ceb, type: 2}
   - {fileID: 2100000, guid: afec8ab64ea62274dabc2ef27962af1f, type: 2}
@@ -7908,8 +7814,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 32
-  m_LightmapTilingOffset: {x: .826171875, y: .826171875, z: -.00322723389, w: -.00322723389}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .165039062, y: .165039062, z: .719081879, w: .562831879}
   m_Materials:
   - {fileID: 2100000, guid: 127a89a6c8c0e444a8bb4978bbc6ccf6, type: 2}
   - {fileID: 2100000, guid: afec8ab64ea62274dabc2ef27962af1f, type: 2}
@@ -8110,8 +8016,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 23
-  m_LightmapTilingOffset: {x: .853515625, y: .853515625, z: -.00333404541, w: -.00333404541}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .169921875, y: .169921875, z: .221992493, w: .768867493}
   m_Materials:
   - {fileID: 2100000, guid: 0e41c65b0ce86694eb8b2bdb3e206ebc, type: 2}
   - {fileID: 2100000, guid: afec8ab64ea62274dabc2ef27962af1f, type: 2}
@@ -8182,8 +8088,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 24
-  m_LightmapTilingOffset: {x: .900390625, y: .900390625, z: -.00351715088, w: -.00351715088}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .1796875, y: .1796875, z: .423126221, w: .384063721}
   m_Materials:
   - {fileID: 2100000, guid: 3981161c01107df4eba4be17be96ee52, type: 2}
   - {fileID: 2100000, guid: afec8ab64ea62274dabc2ef27962af1f, type: 2}
@@ -8254,8 +8160,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 5
-  m_LightmapTilingOffset: {x: 1, y: 1, z: -.00390625, w: -.00390625}
+  m_LightmapIndex: 1
+  m_LightmapTilingOffset: {x: .268554688, y: .268554688, z: .306568146, w: .551685333}
   m_Materials:
   - {fileID: 2100000, guid: 127a89a6c8c0e444a8bb4978bbc6ccf6, type: 2}
   - {fileID: 2100000, guid: d4d77820fad0e514babfa303a620af31, type: 2}
@@ -8446,7 +8352,7 @@ Renderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_LightmapIndex: 1
-  m_LightmapTilingOffset: {x: 1, y: 1, z: -.00390625, w: -.00390625}
+  m_LightmapTilingOffset: {x: .401367188, y: .401367188, z: .564838409, w: -.00156784058}
   m_Materials:
   - {fileID: 2100000, guid: 22c2acf740e34ba4b888bc376efa8fdb, type: 2}
   - {fileID: 2100000, guid: f1982c191e2c38740b1f07f28834d3c7, type: 2}
@@ -8517,8 +8423,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 13
-  m_LightmapTilingOffset: {x: 1, y: 1, z: -.00390625, w: -.00390625}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .208007812, y: .208007812, z: .221843719, w: .200359344}
   m_Materials:
   - {fileID: 2100000, guid: 127a89a6c8c0e444a8bb4978bbc6ccf6, type: 2}
   - {fileID: 2100000, guid: e4990ed7e09ac40478c299f955be4794, type: 2}
@@ -8589,8 +8495,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 12
-  m_LightmapTilingOffset: {x: 1, y: 1, z: -.00390625, w: -.00390625}
+  m_LightmapIndex: 1
+  m_LightmapTilingOffset: {x: .213867188, y: .213867188, z: .306781769, w: .808734894}
   m_Materials:
   - {fileID: 2100000, guid: 4737afe2fe5cf884f85152fbfd5bb872, type: 2}
   - {fileID: 2100000, guid: e4990ed7e09ac40478c299f955be4794, type: 2}
@@ -8751,11 +8657,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 317a05755b8044e43870307c4c8fb1a4, type: 3}
       propertyPath: m_LightmapTilingOffset.z
-      value: -.00390625
+      value: .564838409
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 317a05755b8044e43870307c4c8fb1a4, type: 3}
       propertyPath: m_LightmapTilingOffset.w
-      value: -.00390625
+      value: -.00156784058
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 317a05755b8044e43870307c4c8fb1a4, type: 3}
+      propertyPath: m_LightmapTilingOffset.x
+      value: .401367188
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 317a05755b8044e43870307c4c8fb1a4, type: 3}
+      propertyPath: m_LightmapTilingOffset.y
+      value: .401367188
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 317a05755b8044e43870307c4c8fb1a4, type: 3}
@@ -8815,8 +8729,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 17
-  m_LightmapTilingOffset: {x: .982421875, y: .982421875, z: -.00383758545, w: -.00383758545}
+  m_LightmapIndex: 1
+  m_LightmapTilingOffset: {x: .196289062, y: .196289062, z: .827358246, w: .729701996}
   m_Materials:
   - {fileID: 2100000, guid: 4737afe2fe5cf884f85152fbfd5bb872, type: 2}
   - {fileID: 2100000, guid: d4d77820fad0e514babfa303a620af31, type: 2}
@@ -9193,8 +9107,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 20
-  m_LightmapTilingOffset: {x: .91015625, y: .91015625, z: -.00355529785, w: -.00355529785}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .181640625, y: .181640625, z: .611595154, w: .200462341}
   m_Materials:
   - {fileID: 2100000, guid: 3981161c01107df4eba4be17be96ee52, type: 2}
   - {fileID: 2100000, guid: d4d77820fad0e514babfa303a620af31, type: 2}
@@ -9265,8 +9179,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 25
-  m_LightmapTilingOffset: {x: .916015625, y: .916015625, z: -.00357818604, w: -.00357818604}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .182617188, y: .182617188, z: .423114777, w: .562763214}
   m_Materials:
   - {fileID: 2100000, guid: aaea9c00cbd47d24eafe466f92642636, type: 2}
   - {fileID: 2100000, guid: afec8ab64ea62274dabc2ef27962af1f, type: 2}
@@ -9400,8 +9314,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 36
-  m_LightmapTilingOffset: {x: .677734375, y: .677734375, z: -.0026473999, w: -.0026473999}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .134765625, y: .134765625, z: .568809509, w: .828575134}
   m_Materials:
   - {fileID: 2100000, guid: 127a89a6c8c0e444a8bb4978bbc6ccf6, type: 2}
   - {fileID: 2100000, guid: afec8ab64ea62274dabc2ef27962af1f, type: 2}
@@ -9573,6 +9487,10 @@ Prefab:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 10615a1c71ad70544929340915f700cc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0214b61222f44a14489753fc330c8ef7, type: 2}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 10615a1c71ad70544929340915f700cc, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 10615a1c71ad70544929340915f700cc, type: 3}
@@ -9631,8 +9549,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 6
-  m_LightmapTilingOffset: {x: 1, y: 1, z: -.00390625, w: -.00390625}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .208007812, y: .208007812, z: -.000812530518, w: .617351532}
   m_Materials:
   - {fileID: 2100000, guid: 0e41c65b0ce86694eb8b2bdb3e206ebc, type: 2}
   - {fileID: 2100000, guid: afec8ab64ea62274dabc2ef27962af1f, type: 2}
@@ -9703,8 +9621,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 21
-  m_LightmapTilingOffset: {x: .876953125, y: .876953125, z: -.00342559814, w: -.00342559814}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .174804688, y: .174804688, z: .793262482, w: .200489044}
   m_Materials:
   - {fileID: 2100000, guid: 0e41c65b0ce86694eb8b2bdb3e206ebc, type: 2}
   - {fileID: 2100000, guid: e4990ed7e09ac40478c299f955be4794, type: 2}
@@ -9880,8 +9798,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 11
-  m_LightmapTilingOffset: {x: 1, y: 1, z: -.00390625, w: -.00390625}
+  m_LightmapIndex: 1
+  m_LightmapTilingOffset: {x: .33984375, y: .33984375, z: -.00132751465, w: .55140686}
   m_Materials:
   - {fileID: 2100000, guid: ac2844566bf9dc34dbd5b1e377e9382a, type: 2}
   - {fileID: 2100000, guid: afec8ab64ea62274dabc2ef27962af1f, type: 2}
@@ -10086,8 +10004,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 31
-  m_LightmapTilingOffset: {x: .754882812, y: .754882812, z: -.00294876099, w: -.00294876099}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .150390625, y: .150390625, z: .568748474, w: .562889099}
   m_Materials:
   - {fileID: 2100000, guid: 3981161c01107df4eba4be17be96ee52, type: 2}
   - {fileID: 2100000, guid: d4d77820fad0e514babfa303a620af31, type: 2}
