@@ -46,7 +46,7 @@ Material:
       data:
         first:
           name: _EnergyLevel
-        second: 0
+        second: .303571433
     m_Colors:
       data:
         first:
@@ -55,4 +55,4 @@ Material:
       data:
         first:
           name: _EnergyColor
-        second: {r: .304660439, g: .442690194, b: .845588207, a: .650980413}
+        second: {r: .214532852, g: .460088372, b: .941176474, a: .811764717}
