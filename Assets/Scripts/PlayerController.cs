@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         Debug.Log("Enter");
-        if (other.tag == "Cube")
+        if (other.tag == "PowerUp")
         {
             Destroy(other.gameObject);
             sparkleController.Play();

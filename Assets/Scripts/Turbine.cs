@@ -23,7 +23,8 @@ public class Turbine : MonoBehaviour {
     void OnTriggerEnter(Collider other) {
         if (other.tag == "PlayerCollider")
         {
-            turbineBoost.SetBoost(transform.forward * BoostMagnitude, BoostDuration);
+            if(Vector3.Dot(turbineBoost.transform.forward, transform.forward) > 0)
+                turbineBoost.SetBoost(transform.forward * BoostMagnitude, BoostDuration);
         }
     }
 

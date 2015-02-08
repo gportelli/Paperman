@@ -93,7 +93,7 @@ public class WindBoost : MonoBehaviour
     void ShowEnergyLevel()
     {
         Material m = renderer.materials[0];
-        m.SetFloat("_EnergyLevel", 0.05f + boostLevel * 0.45f);
+        m.SetFloat("_EnergyLevel", infiniteBoost ? 0.05f : 0.05f + boostLevel * 0.45f);
     }
 
     public Vector3 GetWindBoost()
