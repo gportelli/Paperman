@@ -44,6 +44,7 @@ GameObject:
   - 23: {fileID: 2372176}
   - 135: {fileID: 13572176}
   - 114: {fileID: 11472176}
+  - 114: {fileID: 11499784}
   m_Layer: 10
   m_Name: StarRed
   m_TagString: PowerUp
@@ -82,7 +83,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 172180}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.6000004, y: 3.28699994, z: -1.00199997}
+  m_LocalPosition: {x: -14.7950001, y: 6.76499987, z: -15.283}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 472178}
@@ -200,6 +201,18 @@ MonoBehaviour:
   RotationSpeed: 50
   OscillationSize: .200000003
   OscillationPeriod: 3
+--- !u!114 &11499784
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 172180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afdeaaef9fc9ad74c9a8eed237c29f71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsRed: 1
 --- !u!135 &13572176
 SphereCollider:
   m_ObjectHideFlags: 1

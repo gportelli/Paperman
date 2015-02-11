@@ -21,19 +21,4 @@ public class AirFluxInspector : Editor
             airFlux.UpdateParticlesParameters();
         }
     }
-
-    private void UpdateParameters(AirFlux airFlux)
-    {
-        airFlux.transform.localScale = new Vector3(airFlux.Radius, airFlux.Height, airFlux.Radius);
-
-        ParticleSystem ps = airFlux.transform.Find("AirFluxParticles").GetComponent<ParticleSystem>();
-
-        ps.startLifetime = airFlux.Height *1.7f / 3f;
-        ps.maxParticles = (int)(10 * airFlux.Height * airFlux.Radius * airFlux.Radius);
-        ps.transform.localScale = new Vector3(1, 1, 1);
-
-        CapsuleCollider collider = airFlux.GetComponent<CapsuleCollider>();
-        collider.center = new Vector3(0, 0.5f - airFlux.Radius / airFlux.Height / 2, 0);
-        collider.height = 1 + airFlux.Radius / airFlux.Height;
-    }
 }

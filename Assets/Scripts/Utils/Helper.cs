@@ -9,26 +9,25 @@ class Helper
         return angle;
     }
 
-    static public Vector3 SmoothDampVector3(Vector3 current, Vector3 target, ref Vector3 currentVelocity, float smoothTime, float maxSpeed)
+    static public GameStatus GetOrCreateGameStatus()
     {
-        Vector3 result = new Vector3();
+        GameStatus gameStatus;
 
-        result.x = Mathf.SmoothDamp(current.x, target.x, ref currentVelocity.x, smoothTime, maxSpeed);
-        result.y = Mathf.SmoothDamp(current.y, target.y, ref currentVelocity.y, smoothTime, maxSpeed);
-        result.z = Mathf.SmoothDamp(current.z, target.z, ref currentVelocity.z, smoothTime, maxSpeed);
+        GameObject tmp = GameObject.FindGameObjectWithTag("GameStatus");
+        if (tmp != null)
+        {
+            gameStatus = tmp.GetComponent<GameStatus>();
+        }
+        else
+        {
+            tmp = new GameObject("GameStatus");
+            tmp.tag = "GameStatus";
+            tmp.AddComponent<GameStatus>();
 
-        return result;
-    }
+            gameStatus = tmp.GetComponent<GameStatus>();
+        }
 
-    static public Vector3 SmoothDampVector3(Vector3 current, Vector3 target, ref Vector3 currentVelocity, float smoothTime)
-    {
-        Vector3 result = new Vector3();
-
-        result.x = Mathf.SmoothDamp(current.x, target.x, ref currentVelocity.x, smoothTime);
-        result.y = Mathf.SmoothDamp(current.y, target.y, ref currentVelocity.y, smoothTime);
-        result.z = Mathf.SmoothDamp(current.z, target.z, ref currentVelocity.z, smoothTime);
-
-        return result;
+        return gameStatus;
     }
 }
 

@@ -7,6 +7,7 @@ public class WindBoost : MonoBehaviour
     public float windSmoothTime = 2;
     public float boostDuration = 1;
     public bool infiniteBoost = false;
+    public float StartBoost = 1;
 
     private Vector3 currWindSpeed, desiredWindSpeed, currVel;
 
@@ -32,7 +33,15 @@ public class WindBoost : MonoBehaviour
         airfluxWind = Vector3.zero;
         currVel = Vector3.zero;
 
+        boostLevel = StartBoost;
+        desiredWindSpeed = Vector3.zero;
+
         ShowEnergyLevel();
+    }
+
+    public float GetAvailableBoost()
+    {
+        return boostLevel;
     }
 
     void OnTriggerEnter(Collider other)
@@ -82,7 +91,7 @@ public class WindBoost : MonoBehaviour
             boostIsPlaying = true;
         }
 
-        currWindSpeed = Helper.SmoothDampVector3(currWindSpeed, desiredWindSpeed, ref currVel, windSmoothTime);
+        currWindSpeed = Vector3.SmoothDamp(currWindSpeed, desiredWindSpeed, ref currVel, windSmoothTime);
 
         Color c = new Color(dustColor.r, dustColor.g, dustColor.b, dustColor.a * currWindSpeed.magnitude / windSpeed);
         boostWindParticle.renderer.material.SetColor("_TintColor", c);
@@ -99,5 +108,13 @@ public class WindBoost : MonoBehaviour
     public Vector3 GetWindBoost()
     {
         return windVector;
+    }
+
+    internal void IncreaseBoostLevel(float level)
+    {
+        boostLevel += level;
+        if (boostLevel > 1) boostLevel = 1;
+
+        ShowEnergyLevel();
     }
 }

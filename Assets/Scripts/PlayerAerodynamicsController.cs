@@ -32,6 +32,7 @@ public class PlayerAerodynamicsController : MonoBehaviour {
     public bool showVectors;
     public float vectorsScale = 1f;
 
+    public AudioSource WindAudio;
     public GameObject redCubePrefab, greenCubePrefab, yellowCubePrefab, blueCubePrefab;
 
     private GameObject redCube, greenCube, yellowCube, blueCube;
@@ -72,7 +73,8 @@ public class PlayerAerodynamicsController : MonoBehaviour {
     /// <returns></returns>
     public Vector3 getAcceleration()
     {
-        return (rigidbody.velocity - lastVelocity) / Time.deltaTime;
+        if (Time.deltaTime == 0) return Vector3.zero;
+        else return (rigidbody.velocity - lastVelocity) / Time.deltaTime;
 
         //return (resultForce + weightForce) / rigidbody.mass;
     }
@@ -80,8 +82,6 @@ public class PlayerAerodynamicsController : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        rigidbody.velocity = Vector3.zero;
-
         Physics.gravity = new Vector3(0, -Gravity, 0);
         rigidbody.mass = Mass;
 
@@ -95,8 +95,21 @@ public class PlayerAerodynamicsController : MonoBehaviour {
         blueCube = Instantiate(blueCubePrefab) as GameObject;
 
         windBoost = GetComponent<WindBoost>();
+        WindAudio.Play();
+        WindAudio.volume = 0;
 
         //rigidbody.velocity = new Vector3(0, -10f, 0);
+    }
+
+    private void updateWindSound()
+    {
+        float wspeed = rigidbody.velocity.magnitude;
+        float boost = windBoost.GetWindBoost().magnitude / windBoost.windSpeed;
+        
+        WindAudio.volume = wspeed / 10 + boost * 0.5f;
+
+        float pitchExcursion = 2f;
+        WindAudio.pitch = 1 - pitchExcursion * .5f + WindAudio.volume * pitchExcursion;
     }
 
     public float getTerminalBottomSpeed()
@@ -133,12 +146,13 @@ public class PlayerAerodynamicsController : MonoBehaviour {
         //if (count-- == 0) Debug.Break();
 
         UpdateForces();
+        updateWindSound();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("Fire2") && GameController.instance.DebugOn)
             showVectors = !showVectors;
 
         UpdateVectors();
@@ -195,7 +209,7 @@ public class PlayerAerodynamicsController : MonoBehaviour {
     private void UpdateForces()
     {
         lastVelocity = rigidbody.velocity;
-
+        
         Vector3 windVelocity = -rigidbody.velocity + windBoost.GetWindBoost();
 
         Vector3 normalBottom = transform.up;

@@ -30,6 +30,8 @@ public class SparkleController : MonoBehaviour {
                 progress = 0;
                 sparkleParticles.emit = false;
                 sparkleParticlesSecondary.emit = false;
+                
+                //Debug.Log("end emitting...");
             }
         }
 	}
@@ -37,7 +39,9 @@ public class SparkleController : MonoBehaviour {
     public void Play()
     {
         progress = duration;
+        sparkleParticles.ClearParticles();
         sparkleParticles.emit = true;
         sparkleParticlesSecondary.emit = true;
+        //Debug.Log("emitting...");
     }
 }

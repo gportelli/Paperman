@@ -156,6 +156,7 @@ GameObject:
   - 135: {fileID: 13593508}
   - 54: {fileID: 5493508}
   - 114: {fileID: 11493508}
+  - 82: {fileID: 8247990}
   m_Layer: 10
   m_Name: Turbine
   m_TagString: Untagged
@@ -279,8 +280,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 193526}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.66899967, y: 2, z: -10.8979998}
+  m_LocalRotation: {x: 0, y: .625514984, z: 0, w: .780212164}
+  m_LocalPosition: {x: -22.7600002, y: 11.0100002, z: -9.11999989}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 493524}
@@ -433,6 +434,64 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &8247990
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193526}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: 3387f8bb6906b3a43940d9bd1ec2bf7a, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: .904999971
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!114 &11493508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -446,7 +505,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RotationSpeed: 200
   BoostMagnitude: 1
-  BoostDuration: 1
+  BoostDuration: .5
+  Started: 1
   turbineA: {fileID: 493510}
   turbineB: {fileID: 493508}
 --- !u!135 &13593508

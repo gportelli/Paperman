@@ -10,6 +10,7 @@ public class AirFlux : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         GetComponent<MeshRenderer>().renderer.enabled = false;
+        UpdateParticlesParameters();
 	}
 
     public void UpdateParticlesParameters()
@@ -22,7 +23,7 @@ public class AirFlux : MonoBehaviour {
         ps.maxParticles = (int)(Density * Height * Radius * Radius);
         ps.transform.localScale = new Vector3(1, 1, 1);
         ps.startSpeed = 1.8f * WindVelocity;
-        ps.emissionRate = 4 * WindVelocity;
+        ps.emissionRate = 0.2f * WindVelocity * Density * Radius * Radius;
 
         CapsuleCollider collider = GetComponent<CapsuleCollider>();
         collider.center = new Vector3(0, 0.5f - Radius / Height / 2, 0);

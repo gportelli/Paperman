@@ -46,7 +46,7 @@ Material:
       data:
         first:
           name: _EnergyLevel
-        second: .303571433
+        second: 0
     m_Colors:
       data:
         first:

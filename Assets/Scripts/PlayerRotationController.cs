@@ -19,8 +19,12 @@ public class PlayerRotationController : MonoBehaviour {
 
     private WindBoost windBoost;
 
-	void Start () {
+    void Awake()
+    {
         windBoost = GetComponent<WindBoost>();
+    }
+
+	void Start () {        
         terminalFrontSpeed = GetComponent<PlayerAerodynamicsController>().getTerminalFrontSpeed();
 	}
 	

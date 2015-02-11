@@ -12,6 +12,7 @@ GameObject:
   - 23: {fileID: 2398924}
   - 114: {fileID: 11498924}
   - 135: {fileID: 13598924}
+  - 114: {fileID: 11462890}
   m_Layer: 10
   m_Name: Anemometer
   m_TagString: PowerUp
@@ -26,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 198924}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.8299999, y: 4.46999979, z: .0500000007}
+  m_LocalPosition: {x: -30.5599995, y: 1.28999996, z: 1.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -58,6 +59,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 198924}
   m_Mesh: {fileID: 4300000, guid: f222e83a5193b8a4ab624915821d4f4f, type: 3}
+--- !u!114 &11462890
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 198924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3461ced928d97e147a93e8d3cb2dcd10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PowerUpSize: .300000012
 --- !u!114 &11498924
 MonoBehaviour:
   m_ObjectHideFlags: 1

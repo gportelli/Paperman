@@ -2,9 +2,9 @@
 using System.Collections;
 
 public class Rotator : MonoBehaviour {
-    public float RotationSpeed = 50;
-    public float OscillationSize = 0.3f;
-    public float OscillationPeriod = 1;
+    public float RotationSpeed = 400;
+    public float OscillationSize = 0.1f;
+    public float OscillationPeriod = 3;
 
     private float progress;
     private Vector3 position;
