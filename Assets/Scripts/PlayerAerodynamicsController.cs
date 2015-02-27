@@ -152,7 +152,7 @@ public class PlayerAerodynamicsController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire2") && GameController.instance.DebugOn)
+        if (PlayerInput.Instance.Input.GetButtonDown("VectorsToggle") && GameController.instance.DebugOn)
             showVectors = !showVectors;
 
         UpdateVectors();
@@ -255,7 +255,7 @@ public class PlayerAerodynamicsController : MonoBehaviour {
 
     private float GetCdFront()
     {
-        float rotX = Helper.GetRotation(transform.eulerAngles.x + cdFrontZeroStart);
+        float rotX = Helper.GetZeroRelativeRotation(transform.eulerAngles.x + cdFrontZeroStart);
 
         if (rotX > 0) return cdFront;
         else return Mathf.Lerp(cdFront, 0, -rotX / cdFrontZeroSize);

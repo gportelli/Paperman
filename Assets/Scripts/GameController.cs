@@ -11,6 +11,8 @@ public class GameController : MonoBehaviour {
     public int StartLevel = 0;
     public bool MusicOn = false;
     public bool InvertAxis = true;
+    public bool InfiniteBoost = false;
+    public bool KinematicMode = false;
 
     public Canvas Menu;
 
@@ -44,8 +46,6 @@ public class GameController : MonoBehaviour {
             gameStatus.MusicOn = MusicOn;
             gameStatus.InvertAxis = InvertAxis;
         }
-
-        DontDestroyOnLoad(gameStatus.gameObject);
     }
 
 	// Use this for initialization
@@ -54,11 +54,20 @@ public class GameController : MonoBehaviour {
 
         audio.enabled = gameStatus.MusicOn;
 
-        LoadLevel();        
+        LoadLevel();
+
+        cameraController.Init();
+
+        if (DebugOn && KinematicMode)
+        {
+            player.rigidbody.isKinematic = true;
+        }
+
+        if (KinematicMode) StartFromCurrent = true;
 
         if (DebugOn && (SkipIntro || StartFromCurrent))
         {
-            if(!StartFromCurrent)
+            if (!StartFromCurrent)
             {
                 player.transform.position = level.StartWindow.transform.TransformPoint(0, 0, .5f);
                 player.transform.rotation = level.StartWindow.transform.rotation;
@@ -81,7 +90,7 @@ public class GameController : MonoBehaviour {
         level = Levels[gameStatus.Level];
 
         WindBoost windBoost = player.GetComponent<WindBoost>();
-        windBoost.infiniteBoost = level.InfiniteBoost;
+        windBoost.infiniteBoost = DebugOn ? InfiniteBoost : level.InfiniteBoost;
         windBoost.boostDuration = level.BoostDuration;
         windBoost.StartBoost = level.StartBoost;
 
@@ -102,7 +111,7 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetButtonDown("Cancel") && ! ui.ShowingComplete())
+        if (PlayerInput.Instance.Input.GetButtonDown("Start") && !ui.ShowingComplete())
         {
             if (Time.timeScale != 0)
             {
@@ -210,7 +219,7 @@ public class GameController : MonoBehaviour {
             {
                 progress += Time.deltaTime / 1f;
 
-                if (Input.GetButtonDown("Fire1") && Time.timeScale != 0)
+                if (PlayerInput.Instance.Input.GetButtonDown("Fire") && Time.timeScale != 0)
                 {
                     StartGame();
                     yield break;
@@ -231,7 +240,7 @@ public class GameController : MonoBehaviour {
                 progress += Time.deltaTime / level.IntroDuration;
                 if (progress > 1) progress = 1;
 
-                if (Input.GetButtonDown("Fire1") && Time.timeScale != 0)
+                if (PlayerInput.Instance.Input.GetButtonDown("Fire") && Time.timeScale != 0)
                 {
                     StartGame();
                     yield break;
@@ -240,7 +249,7 @@ public class GameController : MonoBehaviour {
                 yield return false;
             }
             while (progress < 1);
-
+            
             cameraController.SetFixed(cameraController.transform.position, Vector3.zero);
         }
         else {
@@ -261,7 +270,7 @@ public class GameController : MonoBehaviour {
         {
             progress += Time.deltaTime / 2f;
 
-            if (Input.GetButtonDown("Fire1")  && Time.timeScale != 0)
+            if (PlayerInput.Instance.Input.GetButtonDown("Fire") && Time.timeScale != 0)
                 break;
 
             yield return null;

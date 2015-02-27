@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Rewired;
 
 public class PlayerRotationController : MonoBehaviour {
     public float X_Torque = 0.02f;
@@ -30,7 +31,13 @@ public class PlayerRotationController : MonoBehaviour {
 	
 	void FixedUpdate () {
         GetUserInput();
-        UpdateRotation();
+
+        if (GameController.instance.DebugOn && GameController.instance.KinematicMode) {
+            UpdateRotationKinematic();
+            UpdatePositionKinematic();
+        }
+        else
+            UpdateRotation();
 	}
 
     //public float testSpeed = 0;
@@ -79,8 +86,41 @@ public class PlayerRotationController : MonoBehaviour {
 
     void GetUserInput()
     {
-        rotateX = Input.GetAxis("Vertical");
-        rotateY = Input.GetAxis("Horizontal");
+        rotateX = PlayerInput.Instance.Input.GetAxis("LeftAnalogVert");
+        rotateY = PlayerInput.Instance.Input.GetAxis("LeftAnalogHoriz");
+    }
+
+    private void UpdateRotationKinematic()
+    {
+        float v = 40.0f;
+
+        float rx = Helper.GetZeroRelativeRotation(transform.eulerAngles.x);
+        float ry = Helper.GetZeroRelativeRotation(transform.eulerAngles.y);
+        float rz = Helper.GetZeroRelativeRotation(transform.eulerAngles.z);
+
+        rx += rotateX * v * Time.deltaTime;
+        ry += rotateY * v * Time.deltaTime;
+
+        if (rotateX >= 0 && rx > MaxXRot)
+        {
+            rx = MaxXRot;
+        }
+        else if (rotateX <= 0 && rx < MinXRot)
+        {
+            rx = MinXRot;
+        }
+
+        transform.eulerAngles = new Vector3(rx, ry, rz);
+    }
+
+    private void UpdatePositionKinematic() {
+        float vy = PlayerInput.Instance.Input.GetAxis("DPadUp");
+        if (vy == 0) vy = -PlayerInput.Instance.Input.GetAxis("DPadDown");
+
+        float vx = PlayerInput.Instance.Input.GetAxis("DPadRight");
+        if (vx == 0) vx = -PlayerInput.Instance.Input.GetAxis("DPadLeft");
+
+        transform.Translate(new Vector3(vx, 0, vy) * Time.deltaTime);
     }
 
     private void UpdateRotation()
@@ -88,9 +128,9 @@ public class PlayerRotationController : MonoBehaviour {
         if (rigidbody.velocity.magnitude < 0.1) return;
 
         float desiredZRotation = 0f, epsilon = 0.3f;
-        float rx = Helper.GetRotation(transform.eulerAngles.x);
+        float rx = Helper.GetZeroRelativeRotation(transform.eulerAngles.x);
         //float ry = Helper.GetRotation(transform.eulerAngles.y);
-        float rz = Helper.GetRotation(transform.eulerAngles.z);
+        float rz = Helper.GetZeroRelativeRotation(transform.eulerAngles.z);
 
         // Adjust x rotation
         float minXRot = GetMinXRot();

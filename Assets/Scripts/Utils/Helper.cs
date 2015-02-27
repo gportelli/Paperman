@@ -3,7 +3,7 @@ using UnityEngine;
 
 class Helper
 {
-    static public float GetRotation(float angle)
+    static public float GetZeroRelativeRotation(float angle)
     {
         if (angle > 180) return angle - 360;
         return angle;
@@ -24,7 +24,7 @@ class Helper
             tmp.tag = "GameStatus";
             tmp.AddComponent<GameStatus>();
 
-            gameStatus = tmp.GetComponent<GameStatus>();
+            gameStatus = tmp.GetComponent<GameStatus>();            
         }
 
         return gameStatus;

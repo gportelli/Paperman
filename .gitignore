@@ -17,6 +17,11 @@ photoshop/
 Builds/
 Assets/Editor/
 Assets/Editor.*
+RewiredBackup/
+Rewired/
+Rewired.*
+Assets/Plugins/
+Assets/Plugins.*
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #

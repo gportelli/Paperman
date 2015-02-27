@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Rewired;
 
 public class WindBoost : MonoBehaviour
 {
@@ -59,8 +60,8 @@ public class WindBoost : MonoBehaviour
     }
 
     void FixedUpdate()
-    {        
-        if (Input.GetButton("Fire1"))
+    {
+        if (PlayerInput.Instance.Input.GetButton("Fire"))
             desiredWindSpeed = new Vector3(0, windSpeed, 0);          
         else
             desiredWindSpeed = Vector3.zero;        

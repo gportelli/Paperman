@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using Rewired;
 
 public class UIController : MonoBehaviour {
     public static UIController instance;
@@ -97,7 +98,7 @@ public class UIController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetButtonDown("Fire1") && InGameMenu.enabled)
+        if (PlayerInput.Instance.Input.GetButtonDown("Fire") && InGameMenu.enabled)
         {
             if (NextLevelButton.gameObject.activeInHierarchy) GameController.instance.NextLevel();
             else if (ContinueButton.gameObject.activeInHierarchy) GameController.instance.Continue();
@@ -125,10 +126,18 @@ public class UIController : MonoBehaviour {
 
                 float padding = 0.1f;
                 if (targetPosition.x < padding) targetPosition.x = padding;
-                else if (targetPosition.x > 1 - padding) targetPosition.x = 1 - padding;
+                else if (targetPosition.x > 1 - padding)
+                {
+                    targetPosition.x = 1 - padding;
+                    targetPosition.y *= 1 - padding;
+                }
 
                 if (targetPosition.y < padding) targetPosition.y = padding;
-                else if (targetPosition.y > 1 - padding) targetPosition.y = 1 - padding;
+                else if (targetPosition.y > 1 - padding)
+                {
+                    targetPosition.y = 1 - padding;
+                    targetPosition.x *= 1 - padding;
+                }
 
                 DistanceIndicator.rectTransform.anchoredPosition = new Vector3(Screen.width * (targetPosition.x - 0.5f), Screen.height * (targetPosition.y - 0.5f), 0);
             }

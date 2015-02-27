@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Rewired;
 
 public class CameraController : MonoBehaviour {
     public enum CameraModes
@@ -28,20 +29,23 @@ public class CameraController : MonoBehaviour {
     private Vector3 accelerationOffset;
     private Vector3 currAccelerationOffset;
 
-    private Vector3 rotation, currentRotation;
+    private Vector3 rotation;
+    private Quaternion currentRotation;
     private float rotationTime;
 
     private GameObject player;
     private PlayerController playerController;
 
-    private Vector3 currentVelocity, currentRotVelocity;
+    private Vector3 currentVelocity, currentDampVelocity;
 
     private CameraModes mode;
-    private Vector3 fixedPosition, fixedOffset;
-    float fixedOffsetDuration, fixedOffsetProgress;
-    bool followTransition = false;
+    private Vector3 fixedPosition;
 
-    private int cameraMode = 0;
+    //private Vector3 fixedPosition, fixedOffset;
+    //float fixedOffsetDuration, fixedOffsetProgress;
+    //bool followTransition = false;
+
+    private int cameraMode;
 
     void Awake()
     {
@@ -51,16 +55,45 @@ public class CameraController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {        
+       
+	}
+
+    public void Init()
+    {
         currAccelerationOffset = accelerationOffset = Vector3.zero;
 
-        currentRotation = rotation = new Vector3(rotationStartX, rotationOffsetY, 0);
-	}
+        rotation = new Vector3(rotationStartX, rotationOffsetY, 0);
+        currentRotation = new Quaternion();
+        currentRotation.eulerAngles = rotation;
+
+        ResetCameraPosition();
+    }
+
+    private Vector3 GetTargetLookAt()
+    {
+        float targetLookAtDistance = 1f;
+
+        Vector3 cameraWorldDirection = transform.position - player.transform.position;
+        Vector3 targetLookAtWorldVector = player.transform.TransformDirection(Vector3.forward);
+        
+        cameraWorldDirection.y = 0;
+        targetLookAtWorldVector.y = 0;
+
+        float k = -Vector3.Dot(cameraWorldDirection.normalized, targetLookAtWorldVector.normalized);
+        targetLookAtDistance = targetLookAtDistance * Mathf.Max(0, k) * targetLookAtDistance;
+
+        Vector3 tla = player.transform.TransformPoint(Vector3.forward * targetLookAtDistance);
+
+        Debug.DrawLine(player.transform.position, tla);
+
+        return tla;
+    }
 
     public void SetFollow(bool smoothTransition = true)
     {
         mode = CameraModes.Follow;
 
-        followTransition = smoothTransition;
+        //followTransition = smoothTransition;
 
         currentVelocity = Vector3.zero;
     }
@@ -82,14 +115,17 @@ public class CameraController : MonoBehaviour {
 
     Vector3 GetOffset()
     {
-        Quaternion q = new Quaternion();
-        q.eulerAngles = currentRotation + new Vector3(cameraMode == 0 ? 0 : player.transform.eulerAngles.x, player.transform.eulerAngles.y, 0);
-
-        return q * new Vector3(0, 0, -cameraDistance);
+        return currentRotation * new Vector3(0, 0, -cameraDistance);
     }
 
-	void LateUpdate () {
-        if (Input.GetButtonDown("Fire3"))
+    void ResetCameraPosition()
+    {
+        RotateCamera();
+        transform.position = player.transform.position + GetOffset();
+    }
+
+	void FixedUpdate () {
+        if (PlayerInput.Instance.Input.GetButtonDown("CameraToggle"))
             cameraMode = 1 - cameraMode;
 
         switch(mode)
@@ -103,7 +139,7 @@ public class CameraController : MonoBehaviour {
                     accelerationOffset = accelerationOffset.normalized * maxOffset;
 
                 currAccelerationOffset = Vector3.SmoothDamp(currAccelerationOffset, accelerationOffset, ref currentVelocity, transitionTime);
-
+                /*
                 if (followTransition)
                 {
                     followTransition = false;
@@ -118,9 +154,11 @@ public class CameraController : MonoBehaviour {
 
                     fixedOffset = Vector3.Lerp(fixedOffset, Vector3.zero, Mathf.SmoothStep(0, 1, fixedOffsetProgress));
                 }
+                */
+                //transform.position = player.transform.position + GetOffset() + currAccelerationOffset + fixedOffset;
+                transform.position = Vector3.SmoothDamp(transform.position, player.transform.position + GetOffset() /*+ currAccelerationOffset */, ref currentDampVelocity, 0.1f);
 
-                transform.position = player.transform.position + GetOffset() + currAccelerationOffset + fixedOffset;
-                transform.LookAt(player.transform.position);
+                transform.LookAt(GetTargetLookAt());
                 break;
 
             case CameraModes.Fixed:
@@ -128,48 +166,26 @@ public class CameraController : MonoBehaviour {
                 transform.LookAt(player.transform.position);
                 break;
         }
-        
-        
-        /*
-        Vector3 offset = new Vector3(0, cameraHeight, cameraDistance);
-
-        Vector3 vel = playerController.GetVelocity();
-
-        if (vel.magnitude > 0)
-        {
-            Vector3 velYplane = new Vector3(vel.x, 0, vel.z);
-            //if (vel.y / velYplane.magnitude < 0.2)
-            //{
-                q = Quaternion.LookRotation(-velYplane);
-            //}
-        }
-            
-        gameObject.transform.position = player.transform.position + q * offset + currAccelerationOffset;
-
-        gameObject.transform.eulerAngles = 
-            new Vector3(
-                gameObject.transform.eulerAngles.x,
-                Quaternion.LookRotation(player.transform.position - gameObject.transform.position).eulerAngles.y,
-                gameObject.transform.eulerAngles.z);
-        */
 	}
 
     private void RotateCamera()
     {
-        float rh = Input.GetAxis("Analog2Horiz"); 
-        float rv = Input.GetAxis("Analog2Vert");
+        float rh = PlayerInput.Instance.Input.GetAxis("RightAnalogHoriz");
+        float rv = PlayerInput.Instance.Input.GetAxis("RightAnalogVert"); 
 
-        if (!GameStatus.instance.InvertAxis)
+        if (GameStatus.instance.InvertAxis)
         {
             rh *= -1;
             rv *= -1;
         }
 
         rotation.y += rh * rotationSpeed * Time.deltaTime;
+        rotation.x += rv * rotationSpeed * Time.deltaTime;
+    
+        // Clamp rotation
         if (rotation.y > 360) rotation.y -= 360;
         else if(rotation.y < 0) rotation.y += 360;
 
-        rotation.x += rv * rotationSpeed * Time.deltaTime;
         if (rotation.x > maxXRotation) rotation.x = maxXRotation;
         else if (rotation.x < minXRotation) rotation.x = minXRotation;
 
@@ -192,9 +208,18 @@ public class CameraController : MonoBehaviour {
             }
         }
 
-        if (currentRotation.y - rotation.y > 180) rotation.y += 360;
-        else if (currentRotation.y - rotation.y < -180) currentRotation.y += 360;
+        //Vector3 compoundRotation = rotation + new Vector3(cameraMode == 0 ? 0 : player.transform.eulerAngles.x, player.transform.eulerAngles.y, 0);
 
-        currentRotation = Vector3.SmoothDamp(currentRotation, rotation, ref currentRotVelocity, rotationSmoothTime);
+        Quaternion qRotation = new Quaternion();
+        qRotation.eulerAngles = rotation;
+
+        Quaternion playerRotation = new Quaternion();
+        playerRotation.eulerAngles = new Vector3(cameraMode == 0 ? 0 : player.transform.eulerAngles.x, player.transform.eulerAngles.y, 0);
+
+        //if (currentRotation.y - compoundRotation.y > 180) compoundRotation.y += 360;
+        //else if (currentRotation.y - compoundRotation.y < -180) currentRotation.y += 360;
+
+        //currentRotation = Vector3.SmoothDamp(currentRotation, compoundRotation, ref currentRotVelocity, rotationSmoothTime);
+        currentRotation = playerRotation * qRotation;
     }
 }

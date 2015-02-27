@@ -22,6 +22,7 @@ public class GameStatus : MonoBehaviour {
     void Awake()
     {
         instance = this;
+        DontDestroyOnLoad(this);
     }
 
 	// Use this for initialization
